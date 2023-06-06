@@ -2,7 +2,10 @@
 {
     public class Especie
     {
-        public int Id { get; set; }
-        public string nome { get; set; }
+        public int id { get; set; }
+        public string raca { get; set; }
+        public ICollection<Animal> animais { get; set; }
+
+        public Especie() { }   
     }
 }

@@ -2,11 +2,14 @@
 {
     public class Proprietario
     {
-        public int Id { get; set; }
+        public int id { get; set; }
         public string nome { get; set; }
         public string? telefone { get; set;}
         public DateTime? dataNascimento { get; set; }
-        public Endereco? endereco { get; set; }
+        public Endereco endereco { get; set; }
+        public ICollection<Animal> animais { get; set; }
+
+        public Proprietario() { }
 
 
     }

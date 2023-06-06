@@ -1,9 +1,15 @@
-﻿namespace Sistema_Marcacao_Clinica_Veterinaria.Models
+﻿using Sistema_Marcacao_Clinica_Veterinaria.Enums;
+
+namespace Sistema_Marcacao_Clinica_Veterinaria.Models
 {
-    public class Servico
+    public abstract class Servico
     {
-        public int Id { get; set; }
+        public int id { get; set; }
         public DateTime? data { get; set; }
-        public Pagamento? pagamento { get; set; }
+        public double preco { get; set; }
+        public TipoPagamento tipoPagamento { get; set; }
+        public ICollection<Marcacao>? marcacoes { get; set; }
+
+        public Servico() { }
     }
 }

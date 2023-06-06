@@ -2,8 +2,11 @@
 {
     public class Veterinario
     {
-        public int Id { get; set; }
+        public int id { get; set; }
         public string nome { get; set; }
         public string especialidade { get; set; }
+        public ICollection<Marcacao> marcacoes { get; set; }
+
+        public Veterinario() { }
     }
 }
