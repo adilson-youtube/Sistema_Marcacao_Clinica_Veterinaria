@@ -47,7 +47,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Repositories
             examePorId.tipoPagamento = examePorId.tipoPagamento;
             examePorId.marcacoes = examePorId.marcacoes;
 
-            _dbContext.Servicos.Update(examePorId);
+            _dbContext.Exames.Update(examePorId);
             _dbContext.SaveChangesAsync();
             return examePorId;
         }

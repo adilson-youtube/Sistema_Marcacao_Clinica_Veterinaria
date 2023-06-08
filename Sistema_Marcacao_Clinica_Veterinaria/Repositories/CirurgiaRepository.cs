@@ -47,7 +47,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Repositories
             cirurgiaPorId.tipoPagamento = cirurgiaPorId.tipoPagamento;
             cirurgiaPorId.marcacoes = cirurgiaPorId.marcacoes;
 
-            _dbContext.Servicos.Update(cirurgiaPorId);
+            _dbContext.Cirurgias.Update(cirurgiaPorId);
             _dbContext.SaveChangesAsync();
             return cirurgiaPorId;
         }

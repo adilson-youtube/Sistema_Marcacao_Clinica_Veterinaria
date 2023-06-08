@@ -4,7 +4,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Services.Interfaces
 {
     public interface IVeterinarioService
     {
-        Task<List<Veterinario>> ListarAnimais();
+        Task<List<Veterinario>> ListarVeterinarios();
         Task<Veterinario> Adicionar(Veterinario veterinario);
         Task<Veterinario> BuscarPorId(int id);
         Task<Veterinario> Actualizar(Veterinario veterinario, int id);

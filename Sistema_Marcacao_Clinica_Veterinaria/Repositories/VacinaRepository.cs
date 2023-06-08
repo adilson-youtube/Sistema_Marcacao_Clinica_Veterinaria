@@ -48,7 +48,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Repositories
             vacinaPorId.tipoPagamento = vacinaPorId.tipoPagamento;
             vacinaPorId.marcacoes = vacinaPorId.marcacoes;
 
-            _dbContext.Servicos.Update(vacinaPorId);
+            _dbContext.Vacinas.Update(vacinaPorId);
             _dbContext.SaveChangesAsync();
             return vacinaPorId;
         }
@@ -61,7 +61,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Repositories
                 throw new Exception($"Vacina com o id {id} não foi encontrado na BD");
             }
 
-            _dbContext.Servicos.Remove(vacinaPorId);
+            _dbContext.Vacinas.Remove(vacinaPorId);
             await _dbContext.SaveChangesAsync();
             return true;
         }

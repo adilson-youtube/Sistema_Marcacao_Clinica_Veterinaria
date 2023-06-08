@@ -14,7 +14,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Repositories
             _dbContext = _dbContext;
         }
 
-        public async Task<List<Veterinario>> ListarAnimais()
+        public async Task<List<Veterinario>> ListarVeterinarios()
         {
             return await _dbContext.Veterinarios.ToListAsync();
         }
