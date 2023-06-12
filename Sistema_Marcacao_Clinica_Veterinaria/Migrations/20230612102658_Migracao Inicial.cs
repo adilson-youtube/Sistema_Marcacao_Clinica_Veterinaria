@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class MigracaoInicial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -77,21 +77,6 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Proprietarios",
-                columns: table => new
-                {
-                    id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    nome = table.Column<string>(type: "text", nullable: false),
-                    telefone = table.Column<string>(type: "text", nullable: false),
-                    dataNascimento = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Proprietarios", x => x.id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Usuarios",
                 columns: table => new
                 {
@@ -99,8 +84,9 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     usuario = table.Column<string>(type: "text", nullable: false),
                     senha = table.Column<string>(type: "text", nullable: false),
+                    role = table.Column<int>(type: "integer", nullable: false),
                     dataCriacao = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    ultimoAcesso = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    ultimoAcesso = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -125,17 +111,42 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Proprietarios",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "integer", nullable: false),
+                    nome = table.Column<string>(type: "text", nullable: false),
+                    telefone = table.Column<string>(type: "text", nullable: false),
+                    dataNascimento = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Proprietarios", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_Proprietarios_Usuarios_id",
+                        column: x => x.id,
+                        principalTable: "Usuarios",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Veterinarios",
                 columns: table => new
                 {
-                    id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    id = table.Column<int>(type: "integer", nullable: false),
                     nome = table.Column<string>(type: "text", nullable: false),
                     especialidade = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Veterinarios", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_Veterinarios_Usuarios_id",
+                        column: x => x.id,
+                        principalTable: "Usuarios",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -279,9 +290,6 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                 name: "Marcacao_Servico");
 
             migrationBuilder.DropTable(
-                name: "Usuarios");
-
-            migrationBuilder.DropTable(
                 name: "Vacinas");
 
             migrationBuilder.DropTable(
@@ -298,6 +306,9 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
 
             migrationBuilder.DropTable(
                 name: "Proprietarios");
+
+            migrationBuilder.DropTable(
+                name: "Usuarios");
 
             migrationBuilder.DropSequence(
                 name: "ServicoSequence");

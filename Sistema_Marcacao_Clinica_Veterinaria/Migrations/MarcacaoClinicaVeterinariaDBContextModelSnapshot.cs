@@ -149,31 +149,6 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                     b.ToTable("Marcacoes");
                 });
 
-            modelBuilder.Entity("Sistema_Marcacao_Clinica_Veterinaria.Models.Proprietario", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
-
-                    b.Property<DateTime?>("dataNascimento")
-                        .IsRequired()
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("nome")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("telefone")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("id");
-
-                    b.ToTable("Proprietarios");
-                });
-
             modelBuilder.Entity("Sistema_Marcacao_Clinica_Veterinaria.Models.Servico", b =>
                 {
                     b.Property<int>("id")
@@ -210,11 +185,14 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                     b.Property<DateTime>("dataCriacao")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<int>("role")
+                        .HasColumnType("integer");
+
                     b.Property<string>("senha")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("ultimoAcesso")
+                    b.Property<DateTime?>("ultimoAcesso")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("usuario")
@@ -224,27 +202,8 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                     b.HasKey("id");
 
                     b.ToTable("Usuarios");
-                });
 
-            modelBuilder.Entity("Sistema_Marcacao_Clinica_Veterinaria.Models.Veterinario", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
-
-                    b.Property<string>("especialidade")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("nome")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("id");
-
-                    b.ToTable("Veterinarios");
+                    b.UseTptMappingStrategy();
                 });
 
             modelBuilder.Entity("Sistema_Marcacao_Clinica_Veterinaria.Models.Cirurgia", b =>
@@ -311,6 +270,40 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                     b.ToTable("Vacinas");
                 });
 
+            modelBuilder.Entity("Sistema_Marcacao_Clinica_Veterinaria.Models.Proprietario", b =>
+                {
+                    b.HasBaseType("Sistema_Marcacao_Clinica_Veterinaria.Models.Usuario");
+
+                    b.Property<DateTime?>("dataNascimento")
+                        .IsRequired()
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("nome")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("telefone")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.ToTable("Proprietarios");
+                });
+
+            modelBuilder.Entity("Sistema_Marcacao_Clinica_Veterinaria.Models.Veterinario", b =>
+                {
+                    b.HasBaseType("Sistema_Marcacao_Clinica_Veterinaria.Models.Usuario");
+
+                    b.Property<string>("especialidade")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("nome")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.ToTable("Veterinarios");
+                });
+
             modelBuilder.Entity("Marcacao_Servico", b =>
                 {
                     b.HasOne("Sistema_Marcacao_Clinica_Veterinaria.Models.Marcacao", null)
@@ -371,6 +364,24 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                     b.Navigation("animal");
 
                     b.Navigation("veterinario");
+                });
+
+            modelBuilder.Entity("Sistema_Marcacao_Clinica_Veterinaria.Models.Proprietario", b =>
+                {
+                    b.HasOne("Sistema_Marcacao_Clinica_Veterinaria.Models.Usuario", null)
+                        .WithOne()
+                        .HasForeignKey("Sistema_Marcacao_Clinica_Veterinaria.Models.Proprietario", "id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Sistema_Marcacao_Clinica_Veterinaria.Models.Veterinario", b =>
+                {
+                    b.HasOne("Sistema_Marcacao_Clinica_Veterinaria.Models.Usuario", null)
+                        .WithOne()
+                        .HasForeignKey("Sistema_Marcacao_Clinica_Veterinaria.Models.Veterinario", "id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Sistema_Marcacao_Clinica_Veterinaria.Models.Animal", b =>
