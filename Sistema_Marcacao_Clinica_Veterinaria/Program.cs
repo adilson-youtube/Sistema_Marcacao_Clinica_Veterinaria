@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Sistema_Marcacao_Clinica_Veterinaria.Data;
+using Sistema_Marcacao_Clinica_Veterinaria.Repositories;
+using Sistema_Marcacao_Clinica_Veterinaria.Repositories.Interfaces;
 
 namespace Sistema_Marcacao_Clinica_Veterinaria
 {
@@ -20,6 +22,19 @@ namespace Sistema_Marcacao_Clinica_Veterinaria
                 .AddDbContext<MarcacaoClinicaVeterinariaDBContext>(
                     options => options.UseNpgsql(builder.Configuration.GetConnectionString("DataBase"))
                 );
+
+            builder.Services.AddScoped<IAnimalRepository, AnimalRepository>();
+            builder.Services.AddScoped<ICirurgiaRepository, CirurgiaRepository>();
+            builder.Services.AddScoped<IConsultaRepository, ConsultaRepository>();
+            builder.Services.AddScoped<IEnderecoRepository, EnderecoRepository>();
+            builder.Services.AddScoped<IEspecieRepository, EspecieRepository>();
+            builder.Services.AddScoped<IExameRepository, ExameRepository>();
+            builder.Services.AddScoped<IMarcacaoRepository, MarcacaoRepository>();
+            builder.Services.AddScoped<IProprietarioRepository, ProprietarioRepository>();
+            builder.Services.AddScoped<IServicoRepository, ServicoRepository>();
+            builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+            builder.Services.AddScoped<IVacinaRepository, VacinaRepository>();
+            builder.Services.AddScoped<IVeterinarioRepository, VeterinarioRepository>();
 
             var app = builder.Build();
 

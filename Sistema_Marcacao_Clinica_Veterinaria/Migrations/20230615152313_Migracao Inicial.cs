@@ -86,7 +86,13 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                     senha = table.Column<string>(type: "text", nullable: false),
                     role = table.Column<int>(type: "integer", nullable: false),
                     dataCriacao = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    ultimoAcesso = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
+                    ultimoAcesso = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    Discriminator = table.Column<string>(type: "text", nullable: false),
+                    nome = table.Column<string>(type: "text", nullable: true),
+                    telefone = table.Column<string>(type: "text", nullable: true),
+                    dataNascimento = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    Veterinario_nome = table.Column<string>(type: "text", nullable: true),
+                    especialidade = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -111,45 +117,6 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Proprietarios",
-                columns: table => new
-                {
-                    id = table.Column<int>(type: "integer", nullable: false),
-                    nome = table.Column<string>(type: "text", nullable: false),
-                    telefone = table.Column<string>(type: "text", nullable: false),
-                    dataNascimento = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Proprietarios", x => x.id);
-                    table.ForeignKey(
-                        name: "FK_Proprietarios_Usuarios_id",
-                        column: x => x.id,
-                        principalTable: "Usuarios",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Veterinarios",
-                columns: table => new
-                {
-                    id = table.Column<int>(type: "integer", nullable: false),
-                    nome = table.Column<string>(type: "text", nullable: false),
-                    especialidade = table.Column<string>(type: "text", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Veterinarios", x => x.id);
-                    table.ForeignKey(
-                        name: "FK_Veterinarios_Usuarios_id",
-                        column: x => x.id,
-                        principalTable: "Usuarios",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Animais",
                 columns: table => new
                 {
@@ -170,9 +137,9 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                         principalTable: "Especies",
                         principalColumn: "id");
                     table.ForeignKey(
-                        name: "FK_Animais_Proprietarios_proprietarioId",
+                        name: "FK_Animais_Usuarios_proprietarioId",
                         column: x => x.proprietarioId,
-                        principalTable: "Proprietarios",
+                        principalTable: "Usuarios",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -191,9 +158,9 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                 {
                     table.PrimaryKey("PK_Enderecos", x => x.id);
                     table.ForeignKey(
-                        name: "FK_Enderecos_Proprietarios_id",
+                        name: "FK_Enderecos_Usuarios_id",
                         column: x => x.id,
-                        principalTable: "Proprietarios",
+                        principalTable: "Usuarios",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -220,9 +187,9 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Marcacoes_Veterinarios_veterinarioId",
+                        name: "FK_Marcacoes_Usuarios_veterinarioId",
                         column: x => x.veterinarioId,
-                        principalTable: "Veterinarios",
+                        principalTable: "Usuarios",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -299,13 +266,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                 name: "Animais");
 
             migrationBuilder.DropTable(
-                name: "Veterinarios");
-
-            migrationBuilder.DropTable(
                 name: "Especies");
-
-            migrationBuilder.DropTable(
-                name: "Proprietarios");
 
             migrationBuilder.DropTable(
                 name: "Usuarios");

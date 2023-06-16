@@ -182,6 +182,10 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<DateTime>("dataCriacao")
                         .HasColumnType("timestamp with time zone");
 
@@ -203,7 +207,9 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
 
                     b.ToTable("Usuarios");
 
-                    b.UseTptMappingStrategy();
+                    b.HasDiscriminator<string>("Discriminator").HasValue("Usuario");
+
+                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("Sistema_Marcacao_Clinica_Veterinaria.Models.Cirurgia", b =>
@@ -286,7 +292,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.ToTable("Proprietarios");
+                    b.HasDiscriminator().HasValue("Proprietario");
                 });
 
             modelBuilder.Entity("Sistema_Marcacao_Clinica_Veterinaria.Models.Veterinario", b =>
@@ -301,7 +307,13 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.ToTable("Veterinarios");
+                    b.ToTable("Usuarios", t =>
+                        {
+                            t.Property("nome")
+                                .HasColumnName("Veterinario_nome");
+                        });
+
+                    b.HasDiscriminator().HasValue("Veterinario");
                 });
 
             modelBuilder.Entity("Marcacao_Servico", b =>
@@ -364,24 +376,6 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                     b.Navigation("animal");
 
                     b.Navigation("veterinario");
-                });
-
-            modelBuilder.Entity("Sistema_Marcacao_Clinica_Veterinaria.Models.Proprietario", b =>
-                {
-                    b.HasOne("Sistema_Marcacao_Clinica_Veterinaria.Models.Usuario", null)
-                        .WithOne()
-                        .HasForeignKey("Sistema_Marcacao_Clinica_Veterinaria.Models.Proprietario", "id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Sistema_Marcacao_Clinica_Veterinaria.Models.Veterinario", b =>
-                {
-                    b.HasOne("Sistema_Marcacao_Clinica_Veterinaria.Models.Usuario", null)
-                        .WithOne()
-                        .HasForeignKey("Sistema_Marcacao_Clinica_Veterinaria.Models.Veterinario", "id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Sistema_Marcacao_Clinica_Veterinaria.Models.Animal", b =>

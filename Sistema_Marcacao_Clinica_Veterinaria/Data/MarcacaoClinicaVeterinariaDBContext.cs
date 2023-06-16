@@ -35,7 +35,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Data
             modelBuilder.ApplyConfiguration(new ExameMap());
             modelBuilder.ApplyConfiguration(new CirurgiaMap());
             modelBuilder.Entity<Servico>().UseTpcMappingStrategy();
-            modelBuilder.Entity<Usuario>().UseTptMappingStrategy();
+            //modelBuilder.Entity<Usuario>().UseTptMappingStrategy();
 
             base.OnModelCreating(modelBuilder);
 
