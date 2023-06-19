@@ -12,7 +12,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Data.Map
             builder.Property(p => p.nome).IsRequired();
             builder.Property(p => p.telefone).IsRequired();
             builder.Property(p => p.dataNascimento).IsRequired();
-            builder.HasOne(p => p.endereco).WithOne(p => p.proprietario).HasForeignKey<Endereco>();
+            builder.HasOne(p => p.endereco).WithOne(p => p.proprietario).HasForeignKey<Endereco>(e => e.proprietarioId);
             builder.HasMany(p => p.animais).WithOne(p => p.proprietario).HasForeignKey("proprietarioId");
         }
     }

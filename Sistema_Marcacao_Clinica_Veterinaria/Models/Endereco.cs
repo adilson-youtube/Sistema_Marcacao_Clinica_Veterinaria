@@ -8,6 +8,7 @@
         public string? municipio { get; set; }
         public string? provincia { get; set; }
         public Proprietario? proprietario { get; set; }
+        public int? proprietarioId { get; set; }
 
         public Endereco() { }
     }

@@ -8,9 +8,10 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Repositories
     public class EspecieRepository : IEspecieRepository
     {
         private readonly MarcacaoClinicaVeterinariaDBContext _dbContext;
-        public EspecieRepository(MarcacaoClinicaVeterinariaDBContext _dbContext) 
+
+        public EspecieRepository(MarcacaoClinicaVeterinariaDBContext dbContext) 
         {
-            _dbContext = _dbContext;
+            _dbContext = dbContext;
         }
 
         public async Task<List<Especie>> ListarEspecies()

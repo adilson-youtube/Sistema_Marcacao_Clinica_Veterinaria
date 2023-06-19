@@ -8,9 +8,10 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Repositories
     public class AnimalRepository : IAnimalRepository
     {
         private readonly MarcacaoClinicaVeterinariaDBContext _dbContext;
-        public AnimalRepository() 
+
+        public AnimalRepository(MarcacaoClinicaVeterinariaDBContext dbContext) 
         {
-            _dbContext = _dbContext;
+            _dbContext = dbContext;
         }
 
         public async Task<List<Animal>> ListarAnimais()

@@ -18,10 +18,10 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Marcacao>>> ListarEnderecos()
+        public async Task<ActionResult<List<Marcacao>>> ListarMarcacoes()
         {
-            List<Marcacao> enderecos = await _marcacaoService.ListarMarcacoes();
-            return Ok(enderecos);
+            List<Marcacao> marcacoes = await _marcacaoService.ListarMarcacoes();
+            return Ok(marcacoes);
         }
 
         [HttpGet("{id}")]
@@ -31,15 +31,15 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Marcacao>> Cadastrar([FromBody] Marcacao enderecoRequeste)
+        public async Task<ActionResult<Marcacao>> Cadastrar([FromBody] Marcacao marcacaoRequeste)
         {
-            return await _marcacaoService.Adicionar(enderecoRequeste);
+            return await _marcacaoService.Adicionar(marcacaoRequeste);
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<Marcacao>> Actualizar([FromBody] Marcacao enderecoRequeste, int id)
+        public async Task<ActionResult<Marcacao>> Actualizar([FromBody] Marcacao marcacaoRequeste, int id)
         {
-            return await _marcacaoService.Actualizar(enderecoRequeste, id);
+            return await _marcacaoService.Actualizar(marcacaoRequeste, id);
         }
 
         [HttpDelete("{id}")]

@@ -11,7 +11,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Repositories
 
         public UsuarioRepository(MarcacaoClinicaVeterinariaDBContext dbContext) 
         {
-            dbContext = _dbContext;
+            _dbContext = dbContext;
         }
 
         public async Task<List<Usuario>> ListarUsuarios()

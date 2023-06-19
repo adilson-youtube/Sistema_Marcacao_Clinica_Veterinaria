@@ -9,9 +9,9 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Repositories
     {
         private readonly MarcacaoClinicaVeterinariaDBContext _dbContext;
 
-        public CirurgiaRepository(MarcacaoClinicaVeterinariaDBContext _dbContext) 
+        public CirurgiaRepository(MarcacaoClinicaVeterinariaDBContext dbContext) 
         {
-            _dbContext = _dbContext;
+            _dbContext = dbContext;
         }
 
         public async Task<List<Cirurgia>> ListarCirurgias()

@@ -82,17 +82,11 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                 {
                     id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    usuario = table.Column<string>(type: "text", nullable: false),
-                    senha = table.Column<string>(type: "text", nullable: false),
-                    role = table.Column<int>(type: "integer", nullable: false),
-                    dataCriacao = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    ultimoAcesso = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    Discriminator = table.Column<string>(type: "text", nullable: false),
-                    nome = table.Column<string>(type: "text", nullable: true),
-                    telefone = table.Column<string>(type: "text", nullable: true),
-                    dataNascimento = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    Veterinario_nome = table.Column<string>(type: "text", nullable: true),
-                    especialidade = table.Column<string>(type: "text", nullable: true)
+                    usuario = table.Column<string>(type: "text", nullable: true),
+                    senha = table.Column<string>(type: "text", nullable: true),
+                    role = table.Column<int>(type: "integer", nullable: true),
+                    dataCriacao = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    ultimoAcesso = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -117,6 +111,47 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Proprietarios",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    nome = table.Column<string>(type: "text", nullable: false),
+                    telefone = table.Column<string>(type: "text", nullable: false),
+                    dataNascimento = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    usuarioId = table.Column<int>(type: "integer", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Proprietarios", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_Proprietarios_Usuarios_usuarioId",
+                        column: x => x.usuarioId,
+                        principalTable: "Usuarios",
+                        principalColumn: "id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Veterinarios",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    nome = table.Column<string>(type: "text", nullable: false),
+                    especialidade = table.Column<string>(type: "text", nullable: false),
+                    usuarioId = table.Column<int>(type: "integer", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Veterinarios", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_Veterinarios_Usuarios_usuarioId",
+                        column: x => x.usuarioId,
+                        principalTable: "Usuarios",
+                        principalColumn: "id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Animais",
                 columns: table => new
                 {
@@ -137,9 +172,9 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                         principalTable: "Especies",
                         principalColumn: "id");
                     table.ForeignKey(
-                        name: "FK_Animais_Usuarios_proprietarioId",
+                        name: "FK_Animais_Proprietarios_proprietarioId",
                         column: x => x.proprietarioId,
-                        principalTable: "Usuarios",
+                        principalTable: "Proprietarios",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -148,21 +183,22 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                 name: "Enderecos",
                 columns: table => new
                 {
-                    id = table.Column<int>(type: "integer", nullable: false),
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     rua = table.Column<string>(type: "text", nullable: false),
                     bairro = table.Column<string>(type: "text", nullable: false),
                     municipio = table.Column<string>(type: "text", nullable: false),
-                    provincia = table.Column<string>(type: "text", nullable: false)
+                    provincia = table.Column<string>(type: "text", nullable: false),
+                    proprietarioId = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Enderecos", x => x.id);
                     table.ForeignKey(
-                        name: "FK_Enderecos_Usuarios_id",
-                        column: x => x.id,
-                        principalTable: "Usuarios",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
+                        name: "FK_Enderecos_Proprietarios_proprietarioId",
+                        column: x => x.proprietarioId,
+                        principalTable: "Proprietarios",
+                        principalColumn: "id");
                 });
 
             migrationBuilder.CreateTable(
@@ -187,9 +223,9 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Marcacoes_Usuarios_veterinarioId",
+                        name: "FK_Marcacoes_Veterinarios_veterinarioId",
                         column: x => x.veterinarioId,
-                        principalTable: "Usuarios",
+                        principalTable: "Veterinarios",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -223,6 +259,12 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                 column: "proprietarioId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Enderecos_proprietarioId",
+                table: "Enderecos",
+                column: "proprietarioId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Marcacao_Servico_marcacaoId",
                 table: "Marcacao_Servico",
                 column: "marcacaoId");
@@ -236,6 +278,18 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                 name: "IX_Marcacoes_veterinarioId",
                 table: "Marcacoes",
                 column: "veterinarioId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Proprietarios_usuarioId",
+                table: "Proprietarios",
+                column: "usuarioId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Veterinarios_usuarioId",
+                table: "Veterinarios",
+                column: "usuarioId",
+                unique: true);
         }
 
         /// <inheritdoc />
@@ -266,7 +320,13 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                 name: "Animais");
 
             migrationBuilder.DropTable(
+                name: "Veterinarios");
+
+            migrationBuilder.DropTable(
                 name: "Especies");
+
+            migrationBuilder.DropTable(
+                name: "Proprietarios");
 
             migrationBuilder.DropTable(
                 name: "Usuarios");

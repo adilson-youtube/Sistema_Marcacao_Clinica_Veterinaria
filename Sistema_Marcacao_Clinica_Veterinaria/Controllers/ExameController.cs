@@ -18,7 +18,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Exame>>> ListarEnderecos()
+        public async Task<ActionResult<List<Exame>>> ListarExames()
         {
             List<Exame> exames = await _exameService.ListarExames();
             return Ok(exames);

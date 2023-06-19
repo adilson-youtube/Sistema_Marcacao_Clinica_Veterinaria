@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using Sistema_Marcacao_Clinica_Veterinaria.Data;
 using Sistema_Marcacao_Clinica_Veterinaria.Repositories;
 using Sistema_Marcacao_Clinica_Veterinaria.Repositories.Interfaces;
+using Sistema_Marcacao_Clinica_Veterinaria.Services;
+using Sistema_Marcacao_Clinica_Veterinaria.Services.Interfaces;
 
 namespace Sistema_Marcacao_Clinica_Veterinaria
 {
@@ -9,6 +11,8 @@ namespace Sistema_Marcacao_Clinica_Veterinaria
     {
         public static void Main(string[] args)
         {
+            var AllowAllOrigins = "_AllowAllOrigins";
+
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
@@ -36,6 +40,33 @@ namespace Sistema_Marcacao_Clinica_Veterinaria
             builder.Services.AddScoped<IVacinaRepository, VacinaRepository>();
             builder.Services.AddScoped<IVeterinarioRepository, VeterinarioRepository>();
 
+            builder.Services.AddScoped<IAnimalService, AnimalService>();
+            builder.Services.AddScoped<ICirurgiaService, CirurgiaService>();
+            builder.Services.AddScoped<IConsultaService, ConsultaService>();
+            builder.Services.AddScoped<IEnderecoService, EnderecoService>();
+            builder.Services.AddScoped<IEspecieService, EspecieService>();
+            builder.Services.AddScoped<IExameService, ExameService>();
+            builder.Services.AddScoped<IMarcacaoService, MarcacaoService>();
+            builder.Services.AddScoped<IProprietarioService, ProprietarioService>();
+            builder.Services.AddScoped<IServicoService, ServicoService>();
+            builder.Services.AddScoped<IUsuarioService, UsuarioService>();
+            builder.Services.AddScoped<IVacinaService, VacinaService>();
+            builder.Services.AddScoped<IVeterinarioService, VeterinarioService>();
+
+
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy(name: AllowAllOrigins,
+                                  policy =>
+                                  {
+                                      policy
+                                      .WithOrigins("http://localhost:4200")
+                                      .AllowAnyOrigin()
+                                      .AllowAnyMethod()
+                                      .AllowAnyHeader();
+                                  });
+            });
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -45,12 +76,15 @@ namespace Sistema_Marcacao_Clinica_Veterinaria
                 app.UseSwaggerUI();
             }
 
+            app.UseCors(AllowAllOrigins);
+
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
 
 
             app.MapControllers();
+
 
             app.Run();
         }
