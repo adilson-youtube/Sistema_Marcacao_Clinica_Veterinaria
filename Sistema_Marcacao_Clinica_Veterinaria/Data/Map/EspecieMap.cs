@@ -9,7 +9,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Data.Map
         public void Configure(EntityTypeBuilder<Especie> builder)
         {
             builder.HasKey(p => p.id);
-            builder.Property(p => p.raca).IsRequired();
+            builder.Property(p => p.raca);
             builder.HasMany(p => p.animais).WithOne(p => p.especie).HasForeignKey("epecieId");
         }
     }

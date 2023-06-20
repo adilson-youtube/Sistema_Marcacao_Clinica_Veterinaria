@@ -1,4 +1,6 @@
-﻿namespace Sistema_Marcacao_Clinica_Veterinaria.Models
+﻿using System.Text.Json.Serialization;
+
+namespace Sistema_Marcacao_Clinica_Veterinaria.Models
 {
     public class Endereco
     {
@@ -7,7 +9,8 @@
         public string? bairro { get; set; }
         public string? municipio { get; set; }
         public string? provincia { get; set; }
-        public Proprietario? proprietario { get; set; }
+        [JsonIgnore]
+        public Proprietario? proprietario { get; set; } = null;
         public int? proprietarioId { get; set; }
 
         public Endereco() { }

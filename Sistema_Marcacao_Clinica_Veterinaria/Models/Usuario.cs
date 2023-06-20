@@ -1,4 +1,5 @@
 ﻿using Sistema_Marcacao_Clinica_Veterinaria.Enums;
+using System.Text.Json.Serialization;
 
 namespace Sistema_Marcacao_Clinica_Veterinaria.Models
 {
@@ -10,6 +11,8 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Models
         public Role? role { get; set; }
         public DateTime? dataCriacao { get; set; }
         public DateTime? ultimoAcesso { get; set; }
+
+        [JsonIgnore]
         public Proprietario? proprietario { get; set; }
         public Veterinario? veterinario { get; set; }
     }

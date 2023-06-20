@@ -21,10 +21,10 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                 {
                     id = table.Column<int>(type: "integer", nullable: false, defaultValueSql: "nextval('\"ServicoSequence\"')"),
                     data = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    preco = table.Column<double>(type: "double precision", nullable: false),
-                    tipoPagamento = table.Column<int>(type: "integer", nullable: false),
-                    tipoCirurgia = table.Column<string>(type: "text", nullable: false),
-                    descricao = table.Column<string>(type: "text", nullable: false)
+                    preco = table.Column<double>(type: "double precision", nullable: true),
+                    tipoPagamento = table.Column<int>(type: "integer", nullable: true),
+                    tipoCirurgia = table.Column<string>(type: "text", nullable: true),
+                    descricao = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -37,10 +37,10 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                 {
                     id = table.Column<int>(type: "integer", nullable: false, defaultValueSql: "nextval('\"ServicoSequence\"')"),
                     data = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    preco = table.Column<double>(type: "double precision", nullable: false),
-                    tipoPagamento = table.Column<int>(type: "integer", nullable: false),
-                    tipoConsulta = table.Column<string>(type: "text", nullable: false),
-                    descricao = table.Column<string>(type: "text", nullable: false)
+                    preco = table.Column<double>(type: "double precision", nullable: true),
+                    tipoPagamento = table.Column<int>(type: "integer", nullable: true),
+                    tipoConsulta = table.Column<string>(type: "text", nullable: true),
+                    descricao = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -53,7 +53,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                 {
                     id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    raca = table.Column<string>(type: "text", nullable: false)
+                    raca = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -66,10 +66,10 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                 {
                     id = table.Column<int>(type: "integer", nullable: false, defaultValueSql: "nextval('\"ServicoSequence\"')"),
                     data = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    preco = table.Column<double>(type: "double precision", nullable: false),
-                    tipoPagamento = table.Column<int>(type: "integer", nullable: false),
-                    tipoExame = table.Column<string>(type: "text", nullable: false),
-                    descricao = table.Column<string>(type: "text", nullable: false)
+                    preco = table.Column<double>(type: "double precision", nullable: true),
+                    tipoPagamento = table.Column<int>(type: "integer", nullable: true),
+                    tipoExame = table.Column<string>(type: "text", nullable: true),
+                    descricao = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -99,11 +99,11 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                 {
                     id = table.Column<int>(type: "integer", nullable: false, defaultValueSql: "nextval('\"ServicoSequence\"')"),
                     data = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    preco = table.Column<double>(type: "double precision", nullable: false),
-                    tipoPagamento = table.Column<int>(type: "integer", nullable: false),
-                    nome = table.Column<string>(type: "text", nullable: false),
-                    periodo = table.Column<int>(type: "integer", nullable: false),
-                    tipoVacina = table.Column<string>(type: "text", nullable: false)
+                    preco = table.Column<double>(type: "double precision", nullable: true),
+                    tipoPagamento = table.Column<int>(type: "integer", nullable: true),
+                    nome = table.Column<string>(type: "text", nullable: true),
+                    periodo = table.Column<int>(type: "integer", nullable: true),
+                    tipoVacina = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -116,9 +116,9 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                 {
                     id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    nome = table.Column<string>(type: "text", nullable: false),
-                    telefone = table.Column<string>(type: "text", nullable: false),
-                    dataNascimento = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    nome = table.Column<string>(type: "text", nullable: true),
+                    telefone = table.Column<string>(type: "text", nullable: true),
+                    dataNascimento = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     usuarioId = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
@@ -137,8 +137,8 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                 {
                     id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    nome = table.Column<string>(type: "text", nullable: false),
-                    especialidade = table.Column<string>(type: "text", nullable: false),
+                    nome = table.Column<string>(type: "text", nullable: true),
+                    especialidade = table.Column<string>(type: "text", nullable: true),
                     usuarioId = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
@@ -157,11 +157,11 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                 {
                     id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    nome = table.Column<string>(type: "text", nullable: false),
-                    sexo = table.Column<string>(type: "text", nullable: false),
-                    dataNascimento = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    nome = table.Column<string>(type: "text", nullable: true),
+                    sexo = table.Column<string>(type: "text", nullable: true),
+                    dataNascimento = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     epecieId = table.Column<int>(type: "integer", nullable: true),
-                    proprietarioId = table.Column<int>(type: "integer", nullable: false)
+                    proprietarioId = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -175,8 +175,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                         name: "FK_Animais_Proprietarios_proprietarioId",
                         column: x => x.proprietarioId,
                         principalTable: "Proprietarios",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "id");
                 });
 
             migrationBuilder.CreateTable(
@@ -185,10 +184,10 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                 {
                     id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    rua = table.Column<string>(type: "text", nullable: false),
-                    bairro = table.Column<string>(type: "text", nullable: false),
-                    municipio = table.Column<string>(type: "text", nullable: false),
-                    provincia = table.Column<string>(type: "text", nullable: false),
+                    rua = table.Column<string>(type: "text", nullable: true),
+                    bairro = table.Column<string>(type: "text", nullable: true),
+                    municipio = table.Column<string>(type: "text", nullable: true),
+                    provincia = table.Column<string>(type: "text", nullable: true),
                     proprietarioId = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
@@ -207,11 +206,11 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                 {
                     id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    diaSemana = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    diaMes = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    ano = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    animalId = table.Column<int>(type: "integer", nullable: false),
-                    veterinarioId = table.Column<int>(type: "integer", nullable: false)
+                    diaSemana = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    diaMes = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    ano = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    animalId = table.Column<int>(type: "integer", nullable: true),
+                    veterinarioId = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -220,14 +219,12 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                         name: "FK_Marcacoes_Animais_animalId",
                         column: x => x.animalId,
                         principalTable: "Animais",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "id");
                     table.ForeignKey(
                         name: "FK_Marcacoes_Veterinarios_veterinarioId",
                         column: x => x.veterinarioId,
                         principalTable: "Veterinarios",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "id");
                 });
 
             migrationBuilder.CreateTable(

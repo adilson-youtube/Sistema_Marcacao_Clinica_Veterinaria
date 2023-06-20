@@ -9,8 +9,8 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Data.Map
         public void Configure(EntityTypeBuilder<Consulta> builder)
         {
             //builder.HasKey(p => p.id);
-            builder.Property(p => p.tipoConsulta).IsRequired();
-            builder.Property(p => p.descricao).IsRequired();
+            builder.Property(p => p.tipoConsulta);
+            builder.Property(p => p.descricao);
         }
     }
 }

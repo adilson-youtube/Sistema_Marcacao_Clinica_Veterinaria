@@ -12,7 +12,7 @@ using Sistema_Marcacao_Clinica_Veterinaria.Data;
 namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
 {
     [DbContext(typeof(MarcacaoClinicaVeterinariaDBContext))]
-    [Migration("20230619201004_Migracao Inicial")]
+    [Migration("20230620145756_Migracao Inicial")]
     partial class MigracaoInicial
     {
         /// <inheritdoc />
@@ -51,21 +51,18 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
 
                     b.Property<DateTime?>("dataNascimento")
-                        .IsRequired()
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<int?>("epecieId")
                         .HasColumnType("integer");
 
                     b.Property<string>("nome")
-                        .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("proprietarioId")
+                    b.Property<int?>("proprietarioId")
                         .HasColumnType("integer");
 
                     b.Property<string>("sexo")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("id");
@@ -86,22 +83,18 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
 
                     b.Property<string>("bairro")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("municipio")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int?>("proprietarioId")
                         .HasColumnType("integer");
 
                     b.Property<string>("provincia")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("rua")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("id");
@@ -121,7 +114,6 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
 
                     b.Property<string>("raca")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("id");
@@ -137,19 +129,19 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
 
-                    b.Property<int>("animalId")
+                    b.Property<int?>("animalId")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime>("ano")
+                    b.Property<DateTime?>("ano")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<DateTime>("diaMes")
+                    b.Property<DateTime?>("diaMes")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<DateTime>("diaSemana")
+                    b.Property<DateTime?>("diaSemana")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("veterinarioId")
+                    b.Property<int?>("veterinarioId")
                         .HasColumnType("integer");
 
                     b.HasKey("id");
@@ -170,15 +162,12 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
 
                     b.Property<DateTime?>("dataNascimento")
-                        .IsRequired()
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("nome")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("telefone")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int?>("usuarioId")
@@ -204,10 +193,10 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                     b.Property<DateTime?>("data")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<double>("preco")
+                    b.Property<double?>("preco")
                         .HasColumnType("double precision");
 
-                    b.Property<int>("tipoPagamento")
+                    b.Property<int?>("tipoPagamento")
                         .HasColumnType("integer");
 
                     b.HasKey("id");
@@ -254,11 +243,9 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
 
                     b.Property<string>("especialidade")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("nome")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int?>("usuarioId")
@@ -277,11 +264,9 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                     b.HasBaseType("Sistema_Marcacao_Clinica_Veterinaria.Models.Servico");
 
                     b.Property<string>("descricao")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("tipoCirurgia")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.ToTable("Cirurgias");
@@ -292,11 +277,9 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                     b.HasBaseType("Sistema_Marcacao_Clinica_Veterinaria.Models.Servico");
 
                     b.Property<string>("descricao")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("tipoConsulta")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.ToTable("Consultas");
@@ -307,11 +290,9 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                     b.HasBaseType("Sistema_Marcacao_Clinica_Veterinaria.Models.Servico");
 
                     b.Property<string>("descricao")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("tipoExame")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.ToTable("Exames");
@@ -322,15 +303,12 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                     b.HasBaseType("Sistema_Marcacao_Clinica_Veterinaria.Models.Servico");
 
                     b.Property<string>("nome")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int?>("periodo")
-                        .IsRequired()
                         .HasColumnType("integer");
 
                     b.Property<string>("tipoVacina")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.ToTable("Vacinas");
@@ -359,9 +337,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
 
                     b.HasOne("Sistema_Marcacao_Clinica_Veterinaria.Models.Proprietario", "proprietario")
                         .WithMany("animais")
-                        .HasForeignKey("proprietarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("proprietarioId");
 
                     b.Navigation("especie");
 
@@ -381,15 +357,11 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                 {
                     b.HasOne("Sistema_Marcacao_Clinica_Veterinaria.Models.Animal", "animal")
                         .WithMany("marcacoes")
-                        .HasForeignKey("animalId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("animalId");
 
                     b.HasOne("Sistema_Marcacao_Clinica_Veterinaria.Models.Veterinario", "veterinario")
                         .WithMany("marcacoes")
-                        .HasForeignKey("veterinarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("veterinarioId");
 
                     b.Navigation("animal");
 

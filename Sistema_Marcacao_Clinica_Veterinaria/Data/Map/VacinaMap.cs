@@ -9,9 +9,9 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Data.Map
         public void Configure(EntityTypeBuilder<Vacina> builder)
         {
             //builder.HasKey(p => p.id);
-            builder.Property(p => p.nome).IsRequired();
-            builder.Property(p => p.periodo).IsRequired();
-            builder.Property(p => p.tipoVacina).IsRequired();
+            builder.Property(p => p.nome);
+            builder.Property(p => p.periodo);
+            builder.Property(p => p.tipoVacina);
         }
     }
 }

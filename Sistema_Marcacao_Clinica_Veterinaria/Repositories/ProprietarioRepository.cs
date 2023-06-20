@@ -27,7 +27,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Repositories
         public async Task<Proprietario> Adicionar(Proprietario proprietario)
         {
             await _dbContext.Proprietarios.AddAsync(proprietario);
-            _dbContext.SaveChangesAsync();
+            _dbContext.SaveChanges();
             return proprietario;
         }
 
@@ -46,7 +46,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Repositories
             proprietarioPorId.animais = proprietarioPorId.animais;
 
             _dbContext.Proprietarios.Update(proprietarioPorId);
-            _dbContext.SaveChangesAsync();
+            _dbContext.SaveChanges();
             return proprietarioPorId;
         }
 

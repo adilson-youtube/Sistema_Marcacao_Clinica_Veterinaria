@@ -9,10 +9,10 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Data.Map
         public void Configure(EntityTypeBuilder<Endereco> builder)
         {
             builder.HasKey(p => p.id);
-            builder.Property(p => p.rua).IsRequired();
-            builder.Property(p => p.bairro).IsRequired();
-            builder.Property(p => p.municipio).IsRequired();
-            builder.Property(p => p.provincia).IsRequired();
+            builder.Property(p => p.rua);
+            builder.Property(p => p.bairro);
+            builder.Property(p => p.municipio);
+            builder.Property(p => p.provincia);
             //builder.Property(p => p.proprietario).IsRequired();
             //builder.HasOne(p => p.proprietario).WithOne(p => p.endereco).HasForeignKey("proprietarioId");
         }

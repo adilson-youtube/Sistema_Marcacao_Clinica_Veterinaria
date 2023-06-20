@@ -25,6 +25,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria
             builder.Services.AddEntityFrameworkNpgsql()
                 .AddDbContext<MarcacaoClinicaVeterinariaDBContext>(
                     options => options.UseNpgsql(builder.Configuration.GetConnectionString("DataBase"))
+                    //,ServiceLifetime.Transient
                 );
 
             builder.Services.AddScoped<IAnimalRepository, AnimalRepository>();

@@ -9,9 +9,9 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Data.Map
         public void Configure(EntityTypeBuilder<Servico> builder)
         {
             builder.HasKey(p => p.id);
-            builder.Property(p => p.data).IsRequired();
-            builder.Property(p => p.preco).IsRequired();
-            builder.Property(p => p.tipoPagamento).IsRequired();
+            builder.Property(p => p.data);
+            builder.Property(p => p.preco);
+            builder.Property(p => p.tipoPagamento);
             builder.HasMany(p => p.marcacoes).WithMany(p => p.servicos).UsingEntity(
                 "Marcacao_Servico",
                 l => l.HasOne(typeof(Marcacao)).WithMany().HasForeignKey("marcacaoId").HasPrincipalKey(nameof(Marcacao.id)),
