@@ -88,9 +88,6 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                     b.Property<int?>("proprietarioId")
                         .HasColumnType("integer");
 
-                    b.Property<string>("provincia")
-                        .HasColumnType("text");
-
                     b.Property<string>("rua")
                         .HasColumnType("text");
 
@@ -160,6 +157,9 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
 
                     b.Property<DateTime?>("dataNascimento")
                         .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("genero")
+                        .HasColumnType("text");
 
                     b.Property<string>("nome")
                         .HasColumnType("text");

@@ -118,6 +118,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     nome = table.Column<string>(type: "text", nullable: true),
                     telefone = table.Column<string>(type: "text", nullable: true),
+                    genero = table.Column<string>(type: "text", nullable: true),
                     dataNascimento = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     usuarioId = table.Column<int>(type: "integer", nullable: true)
                 },
@@ -187,7 +188,6 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                     rua = table.Column<string>(type: "text", nullable: true),
                     bairro = table.Column<string>(type: "text", nullable: true),
                     municipio = table.Column<string>(type: "text", nullable: true),
-                    provincia = table.Column<string>(type: "text", nullable: true),
                     proprietarioId = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>

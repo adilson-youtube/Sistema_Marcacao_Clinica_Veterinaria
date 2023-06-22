@@ -12,7 +12,7 @@ using Sistema_Marcacao_Clinica_Veterinaria.Data;
 namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
 {
     [DbContext(typeof(MarcacaoClinicaVeterinariaDBContext))]
-    [Migration("20230620145756_Migracao Inicial")]
+    [Migration("20230622133824_Migracao Inicial")]
     partial class MigracaoInicial
     {
         /// <inheritdoc />
@@ -91,9 +91,6 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                     b.Property<int?>("proprietarioId")
                         .HasColumnType("integer");
 
-                    b.Property<string>("provincia")
-                        .HasColumnType("text");
-
                     b.Property<string>("rua")
                         .HasColumnType("text");
 
@@ -163,6 +160,9 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
 
                     b.Property<DateTime?>("dataNascimento")
                         .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("genero")
+                        .HasColumnType("text");
 
                     b.Property<string>("nome")
                         .HasColumnType("text");

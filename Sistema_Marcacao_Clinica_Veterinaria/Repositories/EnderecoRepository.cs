@@ -40,7 +40,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Repositories
             }
 
             enderecoPorId.proprietario = endereco.proprietario;
-            enderecoPorId.provincia = endereco.provincia;
+            //enderecoPorId.provincia = endereco.provincia;
             enderecoPorId.municipio = endereco.municipio;
             enderecoPorId.bairro = endereco.bairro;
             enderecoPorId.rua = endereco.rua;

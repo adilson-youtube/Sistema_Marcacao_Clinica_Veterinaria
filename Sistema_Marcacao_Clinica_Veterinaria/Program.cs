@@ -79,7 +79,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria
 
             app.UseCors(AllowAllOrigins);
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseAuthorization();
 
