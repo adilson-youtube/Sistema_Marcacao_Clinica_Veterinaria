@@ -242,6 +242,9 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                     b.Property<string>("especialidade")
                         .HasColumnType("text");
 
+                    b.Property<string>("genero")
+                        .HasColumnType("text");
+
                     b.Property<string>("nome")
                         .HasColumnType("text");
 

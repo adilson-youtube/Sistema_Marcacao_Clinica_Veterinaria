@@ -27,7 +27,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Repositories
         public async Task<Veterinario> Adicionar(Veterinario veterinario)
         {
             await _dbContext.Veterinarios.AddAsync(veterinario);
-            _dbContext.SaveChangesAsync();
+            _dbContext.SaveChanges();
             return veterinario;
         }
 
@@ -40,11 +40,12 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Repositories
             }
 
             veterinarioPorId.nome = veterinarioPorId.nome;
+            veterinarioPorId.genero = veterinarioPorId.genero;
             veterinarioPorId.especialidade = veterinarioPorId.especialidade;
             veterinarioPorId.marcacoes = veterinarioPorId.marcacoes;
 
             _dbContext.Veterinarios.Update(veterinarioPorId);
-            _dbContext.SaveChangesAsync();
+            _dbContext.SaveChanges();
             return veterinarioPorId;
         }
 

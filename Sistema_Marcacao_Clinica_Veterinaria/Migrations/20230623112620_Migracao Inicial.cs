@@ -139,6 +139,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                     id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     nome = table.Column<string>(type: "text", nullable: true),
+                    genero = table.Column<string>(type: "text", nullable: true),
                     especialidade = table.Column<string>(type: "text", nullable: true),
                     usuarioId = table.Column<int>(type: "integer", nullable: true)
                 },

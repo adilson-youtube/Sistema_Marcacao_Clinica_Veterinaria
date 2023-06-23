@@ -4,6 +4,7 @@
     {
         public int id { get; set; }
         public string? nome { get; set; }
+        public string? genero { get; set; }
         public string? especialidade { get; set; }
         public Usuario? usuario { get; set; } = new Usuario();
         public ICollection<Marcacao>? marcacoes { get; set; }

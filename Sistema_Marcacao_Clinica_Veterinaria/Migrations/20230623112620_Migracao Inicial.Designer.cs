@@ -12,7 +12,7 @@ using Sistema_Marcacao_Clinica_Veterinaria.Data;
 namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
 {
     [DbContext(typeof(MarcacaoClinicaVeterinariaDBContext))]
-    [Migration("20230622133824_Migracao Inicial")]
+    [Migration("20230623112620_Migracao Inicial")]
     partial class MigracaoInicial
     {
         /// <inheritdoc />
@@ -243,6 +243,9 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
 
                     b.Property<string>("especialidade")
+                        .HasColumnType("text");
+
+                    b.Property<string>("genero")
                         .HasColumnType("text");
 
                     b.Property<string>("nome")
