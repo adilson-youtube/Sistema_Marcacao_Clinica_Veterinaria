@@ -9,7 +9,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Data.Map
         public void Configure(EntityTypeBuilder<Cirurgia> builder)
         {
             //builder.HasKey(p => p.id);
-            builder.Property(p => p.tipoCirurgia);
+            //builder.Property(p => p.tipoCirurgia);
             builder.Property(p => p.descricao);
         }
     }

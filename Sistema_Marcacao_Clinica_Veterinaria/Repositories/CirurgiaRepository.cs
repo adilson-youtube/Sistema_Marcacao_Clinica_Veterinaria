@@ -39,7 +39,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Repositories
                 throw new Exception($"Cirurgia com o id {id} não foi encontrado na BD");
             }
 
-            cirurgiaPorId.tipoCirurgia = cirurgiaPorId.tipoCirurgia;
+            //cirurgiaPorId.tipoCirurgia = cirurgiaPorId.tipoCirurgia;
             cirurgiaPorId.descricao = cirurgiaPorId.descricao;
 
             cirurgiaPorId.data = cirurgiaPorId.data;

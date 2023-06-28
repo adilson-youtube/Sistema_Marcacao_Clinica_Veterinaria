@@ -3,7 +3,7 @@
     public class Cirurgia : Servico
     {
         public int id { get; set; }
-        public string? tipoCirurgia { get;set; }
+        //public string? tipoCirurgia { get;set; }
         public string? descricao { get;set; }
 
         public Cirurgia() : base() { }

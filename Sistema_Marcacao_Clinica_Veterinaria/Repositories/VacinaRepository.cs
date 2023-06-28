@@ -41,7 +41,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Repositories
 
             vacinaPorId.nome = vacinaPorId.nome;
             vacinaPorId.periodo = vacinaPorId.periodo;
-            vacinaPorId.tipoVacina = vacinaPorId.tipoVacina;
+            //vacinaPorId.tipoVacina = vacinaPorId.tipoVacina;
 
             vacinaPorId.data = vacinaPorId.data;
             vacinaPorId.preco = vacinaPorId.preco;

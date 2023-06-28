@@ -7,6 +7,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Models
         public int id { get; set; }
         public DateTime? data { get; set; }
         public double? preco { get; set; }
+        public string? tipoServico { get; set; }
         public TipoPagamento? tipoPagamento { get; set; }
         public ICollection<Marcacao>? marcacoes { get; set; }
 

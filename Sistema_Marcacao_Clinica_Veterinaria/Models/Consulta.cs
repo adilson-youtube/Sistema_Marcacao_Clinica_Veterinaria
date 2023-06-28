@@ -3,7 +3,7 @@
     public class Consulta : Servico
     {
         public int id { get; set; }
-        public string? tipoConsulta { get; set;}
+        //public string? tipoConsulta { get; set;}
         public string? descricao { get; set;}
 
         public Consulta() : base() { }

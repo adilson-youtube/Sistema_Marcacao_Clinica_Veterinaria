@@ -39,7 +39,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Repositories
                 throw new Exception($"Exame com o id {id} não foi encontrado na BD");
             }
 
-            examePorId.tipoExame = examePorId.tipoExame;
+            //examePorId.tipoExame = examePorId.tipoExame;
             examePorId.descricao = examePorId.descricao;
 
             examePorId.data = examePorId.data;

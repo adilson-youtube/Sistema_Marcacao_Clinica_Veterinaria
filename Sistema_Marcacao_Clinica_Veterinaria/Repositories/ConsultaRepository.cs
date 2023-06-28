@@ -39,7 +39,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Repositories
                 throw new Exception($"Consulta com o id {id} não foi encontrado na BD");
             }
 
-            consultaPorId.tipoConsulta = consultaPorId.tipoConsulta;
+            //consultaPorId.tipoConsulta = consultaPorId.tipoConsulta;
             consultaPorId.descricao = consultaPorId.descricao;
 
             consultaPorId.data = consultaPorId.data;

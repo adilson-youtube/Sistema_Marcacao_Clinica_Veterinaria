@@ -5,7 +5,7 @@
         public int id { get; set; }
         public string? nome { get; set; }
         public int? periodo { get; set; }
-        public string? tipoVacina { get; set; }
+        //public string? tipoVacina { get; set; }
 
         public Vacina() : base() { }
     }
