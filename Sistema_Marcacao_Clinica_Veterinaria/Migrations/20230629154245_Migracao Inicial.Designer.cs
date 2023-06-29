@@ -12,7 +12,7 @@ using Sistema_Marcacao_Clinica_Veterinaria.Data;
 namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
 {
     [DbContext(typeof(MarcacaoClinicaVeterinariaDBContext))]
-    [Migration("20230628193107_Migracao Inicial")]
+    [Migration("20230629154245_Migracao Inicial")]
     partial class MigracaoInicial
     {
         /// <inheritdoc />

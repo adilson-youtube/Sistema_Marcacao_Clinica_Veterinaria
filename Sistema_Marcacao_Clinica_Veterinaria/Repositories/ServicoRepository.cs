@@ -27,7 +27,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Repositories
         public async Task<Servico> Adicionar(Servico servico)
         {
             await _dbContext.Servicos.AddAsync(servico);
-            _dbContext.SaveChangesAsync();
+            _dbContext.SaveChanges();
             return servico;
         }
 
@@ -42,10 +42,10 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Repositories
             servicoPorId.data = servicoPorId.data;
             servicoPorId.preco = servicoPorId.preco;
             servicoPorId.tipoPagamento = servicoPorId.tipoPagamento;
-            servicoPorId.marcacoes = servicoPorId.marcacoes;
+            //servicoPorId.marcacoes = servicoPorId.marcacoes;
 
             _dbContext.Servicos.Update(servicoPorId);
-            _dbContext.SaveChangesAsync();
+            _dbContext.SaveChanges();
             return servicoPorId;
         }
 

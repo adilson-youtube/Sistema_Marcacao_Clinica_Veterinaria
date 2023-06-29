@@ -27,7 +27,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Repositories
         public async Task<Consulta> Adicionar(Consulta consulta)
         {
             await _dbContext.Consultas.AddAsync(consulta);
-            _dbContext.SaveChangesAsync();
+            _dbContext.SaveChanges();
             return consulta;
         }
 
@@ -45,10 +45,10 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Repositories
             consultaPorId.data = consultaPorId.data;
             consultaPorId.preco = consultaPorId.preco;
             consultaPorId.tipoPagamento = consultaPorId.tipoPagamento;
-            consultaPorId.marcacoes = consultaPorId.marcacoes;
+            //consultaPorId.marcacoes = consultaPorId.marcacoes;
 
             _dbContext.Consultas.Update(consultaPorId);
-            _dbContext.SaveChangesAsync();
+            _dbContext.SaveChanges();
             return consultaPorId;
         }
 

@@ -27,7 +27,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Repositories
         public async Task<Vacina> Adicionar(Vacina vacina)
         {
             await _dbContext.Vacinas.AddAsync(vacina);
-            _dbContext.SaveChangesAsync();
+            _dbContext.SaveChanges();
             return vacina;
         }
 
@@ -46,10 +46,10 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Repositories
             vacinaPorId.data = vacinaPorId.data;
             vacinaPorId.preco = vacinaPorId.preco;
             vacinaPorId.tipoPagamento = vacinaPorId.tipoPagamento;
-            vacinaPorId.marcacoes = vacinaPorId.marcacoes;
+            //vacinaPorId.marcacoes = vacinaPorId.marcacoes;
 
             _dbContext.Vacinas.Update(vacinaPorId);
-            _dbContext.SaveChangesAsync();
+            _dbContext.SaveChanges();
             return vacinaPorId;
         }
 

@@ -12,14 +12,14 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Models
         public TipoPagamento? tipoPagamento { get; set; }
         public ICollection<Marcacao>? marcacoes { get; set; } = new HashSet<Marcacao>();
 
-        [JsonConstructor]
-        protected Servico(DateTime data, double preco, string tipoServico, TipoPagamento tipoPagamento, ICollection<Marcacao> marcacoes) {
-            this.data = data;
-            this.preco = preco;
-            this.tipoServico = tipoServico;
-            this.tipoPagamento = tipoPagamento;
-            this.marcacoes = marcacoes;
-        }
+        //[JsonConstructor]
+        //protected Servico(DateTime data, double preco, string tipoServico, TipoPagamento tipoPagamento, ICollection<Marcacao> marcacoes) {
+        //    this.data = data;
+        //    this.preco = preco;
+        //    this.tipoServico = tipoServico;
+        //    this.tipoPagamento = tipoPagamento;
+        //    //this.marcacoes = marcacoes;
+        //}
 
 
         protected Servico() { }

@@ -27,7 +27,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Repositories
         public async Task<Exame> Adicionar(Exame exame)
         {
             await _dbContext.Exames.AddAsync(exame);
-            _dbContext.SaveChangesAsync();
+            _dbContext.SaveChanges();
             return exame;
         }
 
@@ -45,10 +45,10 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Repositories
             examePorId.data = examePorId.data;
             examePorId.preco = examePorId.preco;
             examePorId.tipoPagamento = examePorId.tipoPagamento;
-            examePorId.marcacoes = examePorId.marcacoes;
+            //examePorId.marcacoes = examePorId.marcacoes;
 
             _dbContext.Exames.Update(examePorId);
-            _dbContext.SaveChangesAsync();
+            _dbContext.SaveChanges();
             return examePorId;
         }
 

@@ -9,12 +9,12 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Models
         //public string? tipoCirurgia { get;set; }
         public string? descricao { get;set; }
 
-        [JsonConstructor]
-        public Cirurgia(string descricao, DateTime data, double preco, string tipoServico, TipoPagamento tipoPagamento, ICollection<Marcacao> marcacoes)
-            : base(data, preco, tipoServico, tipoPagamento, marcacoes)
-        {
-            this.descricao = descricao;
-        }
+        //[JsonConstructor]
+        //public Cirurgia(string descricao, DateTime data, double preco, string tipoServico, TipoPagamento tipoPagamento, ICollection<Marcacao> marcacoes)
+        //    : base(data, preco, tipoServico, tipoPagamento, marcacoes)
+        //{
+        //    this.descricao = descricao;
+        //}
 
 
         public Cirurgia() : base() { }

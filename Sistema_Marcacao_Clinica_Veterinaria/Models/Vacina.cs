@@ -11,13 +11,13 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Models
         public int? periodo { get; set; }
         //public string? tipoVacina { get; set; }
 
-        [JsonConstructor]
-        public Vacina(string nome, int periodo, DateTime data, double preco, string tipoServico, TipoPagamento tipoPagamento, ICollection<Marcacao> marcacoes) 
-            : base(data, preco, tipoServico, tipoPagamento, marcacoes) 
-        { 
-            this.nome = nome;
-            this.periodo = periodo;
-        }
+        //[JsonConstructor]
+        //public Vacina(string nome, int periodo, DateTime data, double preco, string tipoServico, TipoPagamento tipoPagamento, ICollection<Marcacao> marcacoes) 
+        //    : base(data, preco, tipoServico, tipoPagamento, marcacoes) 
+        //{ 
+        //    this.nome = nome;
+        //    this.periodo = periodo;
+        //}
 
 
         public Vacina() : base() { }
