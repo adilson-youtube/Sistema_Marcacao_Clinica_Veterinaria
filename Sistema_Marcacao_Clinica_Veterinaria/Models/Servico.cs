@@ -1,4 +1,5 @@
 ﻿using Sistema_Marcacao_Clinica_Veterinaria.Enums;
+using System.Text.Json.Serialization;
 
 namespace Sistema_Marcacao_Clinica_Veterinaria.Models
 {
@@ -9,8 +10,18 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Models
         public double? preco { get; set; }
         public string? tipoServico { get; set; }
         public TipoPagamento? tipoPagamento { get; set; }
-        public ICollection<Marcacao>? marcacoes { get; set; }
+        public ICollection<Marcacao>? marcacoes { get; set; } = new HashSet<Marcacao>();
 
-        public Servico() { }
+        [JsonConstructor]
+        protected Servico(DateTime data, double preco, string tipoServico, TipoPagamento tipoPagamento, ICollection<Marcacao> marcacoes) {
+            this.data = data;
+            this.preco = preco;
+            this.tipoServico = tipoServico;
+            this.tipoPagamento = tipoPagamento;
+            this.marcacoes = marcacoes;
+        }
+
+
+        protected Servico() { }
     }
 }

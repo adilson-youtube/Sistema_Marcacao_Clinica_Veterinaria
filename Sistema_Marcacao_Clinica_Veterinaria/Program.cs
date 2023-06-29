@@ -1,9 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using Sistema_Marcacao_Clinica_Veterinaria.Data;
+using Sistema_Marcacao_Clinica_Veterinaria.Models;
 using Sistema_Marcacao_Clinica_Veterinaria.Repositories;
 using Sistema_Marcacao_Clinica_Veterinaria.Repositories.Interfaces;
 using Sistema_Marcacao_Clinica_Veterinaria.Services;
 using Sistema_Marcacao_Clinica_Veterinaria.Services.Interfaces;
+using System.Text.Json.Serialization;
 
 namespace Sistema_Marcacao_Clinica_Veterinaria
 {
@@ -17,7 +19,13 @@ namespace Sistema_Marcacao_Clinica_Veterinaria
 
             // Add services to the container.
 
-            builder.Services.AddControllers();
+            //builder.Services.AddControllers();
+            builder.Services.AddControllers()
+                .AddJsonOptions(options => {
+                    options.JsonSerializerOptions.NumberHandling = JsonNumberHandling.Strict;
+                    options.JsonSerializerOptions.UnknownTypeHandling = JsonUnknownTypeHandling.JsonElement;
+
+                    });
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();

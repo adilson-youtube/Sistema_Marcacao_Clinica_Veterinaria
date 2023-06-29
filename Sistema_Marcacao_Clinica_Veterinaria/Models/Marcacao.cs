@@ -7,8 +7,8 @@
         public DateTime? diaMes { get; set; }
         public DateTime? ano { get; set; }
         public Animal? animal { get; set; }
-        public Veterinario? veterinario { get; set; }
-        public ICollection<Servico>? servicos { get; set; } 
+        public Veterinario? veterinario { get; set; } = new Veterinario();
+        public ICollection<Servico>? servicos { get; set; } = new HashSet<Servico>();
 
         public Marcacao() { }
     }

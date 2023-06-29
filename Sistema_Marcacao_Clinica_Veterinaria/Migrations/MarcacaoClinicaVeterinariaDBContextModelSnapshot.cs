@@ -198,7 +198,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Servicos");
+                    b.ToTable("Servicos", (string)null);
 
                     b.UseTptMappingStrategy();
                 });

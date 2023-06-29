@@ -31,9 +31,9 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Servico>> Cadastrar([FromBody] Servico servicoRequeste)
+        public async Task<ActionResult<Object>> Cadastrar([FromBody] Object servicoRequeste)
         {
-            return await _servicoService.Adicionar(servicoRequeste);
+            return await _servicoService.Adicionar(servicoRequeste as Servico);
         }
 
         [HttpPut("{id}")]
