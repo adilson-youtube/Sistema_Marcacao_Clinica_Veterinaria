@@ -6,7 +6,10 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Data
 {
     public class MarcacaoClinicaVeterinariaDBContext : DbContext
     {
-        public MarcacaoClinicaVeterinariaDBContext(DbContextOptions<MarcacaoClinicaVeterinariaDBContext> options) : base(options) { }
+        public MarcacaoClinicaVeterinariaDBContext(DbContextOptions<MarcacaoClinicaVeterinariaDBContext> options)
+            : base(options) {
+            //this.ChangeTracker.LazyLoadingEnabled = false;
+        }
 
         public DbSet<Proprietario> Proprietarios { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }
