@@ -182,6 +182,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     nome = table.Column<string>(type: "text", nullable: true),
                     sexo = table.Column<string>(type: "text", nullable: true),
+                    peso = table.Column<double>(type: "double precision", nullable: true),
                     dataNascimento = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     epecieId = table.Column<int>(type: "integer", nullable: true),
                     proprietarioId = table.Column<int>(type: "integer", nullable: true)

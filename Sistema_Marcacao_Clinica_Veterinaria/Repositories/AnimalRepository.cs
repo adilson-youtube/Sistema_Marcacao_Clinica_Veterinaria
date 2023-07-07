@@ -16,7 +16,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Repositories
 
         public async Task<List<Animal>> ListarAnimais()
         {
-            return await _dbContext.Animais.ToListAsync();
+            return await _dbContext.Animais.Include(p => p.proprietario).ToListAsync();
         }
 
         public async Task<Animal> BuscarPorId(int id)

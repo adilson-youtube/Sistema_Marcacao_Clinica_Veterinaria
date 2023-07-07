@@ -12,7 +12,7 @@ using Sistema_Marcacao_Clinica_Veterinaria.Data;
 namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
 {
     [DbContext(typeof(MarcacaoClinicaVeterinariaDBContext))]
-    [Migration("20230629154245_Migracao Inicial")]
+    [Migration("20230705084609_Migracao Inicial")]
     partial class MigracaoInicial
     {
         /// <inheritdoc />
@@ -56,6 +56,9 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
 
                     b.Property<string>("nome")
                         .HasColumnType("text");
+
+                    b.Property<double?>("peso")
+                        .HasColumnType("double precision");
 
                     b.Property<int?>("proprietarioId")
                         .HasColumnType("integer");

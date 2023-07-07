@@ -54,6 +54,9 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                     b.Property<string>("nome")
                         .HasColumnType("text");
 
+                    b.Property<double?>("peso")
+                        .HasColumnType("double precision");
+
                     b.Property<int?>("proprietarioId")
                         .HasColumnType("integer");
 

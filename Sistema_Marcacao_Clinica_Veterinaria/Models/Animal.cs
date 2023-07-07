@@ -7,6 +7,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Models
         public int id { get; set; }
         public string? nome { get; set; }
         public string? sexo { get; set; }
+        public double? peso { get; set; }
         public DateTime? dataNascimento { get; set; }
         [JsonIgnore]
         public Especie? especie { get; set; }
