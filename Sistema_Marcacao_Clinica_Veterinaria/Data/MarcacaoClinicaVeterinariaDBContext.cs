@@ -37,10 +37,15 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Data
             //modelBuilder.ApplyConfiguration(new ConsultaMap());
             //modelBuilder.ApplyConfiguration(new ExameMap());
             //modelBuilder.ApplyConfiguration(new CirurgiaMap());
-            modelBuilder.Entity<Servico>().ToTable("Servicos").UseTptMappingStrategy();
+            //modelBuilder.Entity<Servico>().ToTable("Servicos").UseTptMappingStrategy();
             //modelBuilder.Entity<Servico>().UseTpcMappingStrategy();
             //modelBuilder.Entity<Usuario>().UseTptMappingStrategy();
             //modelBuilder.Entity<Endereco>().HasOne(e => e.proprietario).WithOne(e => e.endereco).HasForeignKey("proprietarioId");
+
+            modelBuilder.Entity<Servico>().ToTable("Servicos").UseTptMappingStrategy<Servico>();
+            //modelBuilder.Entity<Servico>().ToTable("Servicos").UseTptMappingStrategy<Exame>();
+            //modelBuilder.Entity<Servico>().ToTable("Servicos").UseTptMappingStrategy<Cirurgia>();
+            //modelBuilder.Entity<Servico>().ToTable("Servicos").UseTptMappingStrategy<Vacina>();
 
             base.OnModelCreating(modelBuilder);
 

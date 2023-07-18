@@ -36,6 +36,12 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Controllers
             return await _servicoService.Adicionar(servicoRequeste);
         }
 
+        [HttpPost("AdicionarLista")]
+        public async Task<ActionResult<List<Servico>>> AdicionarLista([FromBody] List<Servico> servicoRequeste)
+        {
+            return await _servicoService.AdicionarLista(servicoRequeste);
+        }
+
         [HttpPut("{id}")]
         public async Task<ActionResult<Servico>> Actualizar([FromBody] Servico servicoRequeste, int id)
         {

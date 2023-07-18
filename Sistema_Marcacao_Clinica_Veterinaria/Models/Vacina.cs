@@ -19,7 +19,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Models
         //    this.periodo = periodo;
         //}
 
-
+        [JsonConstructor()]
         public Vacina() : base() { }
     }
 }

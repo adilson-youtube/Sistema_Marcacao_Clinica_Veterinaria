@@ -31,6 +31,13 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Repositories
             return servico;
         }
 
+        public async Task<List<Servico>> AdicionarLista(List<Servico> servico)
+        {
+            await _dbContext.Servicos.AddRangeAsync(servico);
+            _dbContext.SaveChanges();
+            return servico;
+        }
+
         public async Task<Servico> Actualizar(Servico servico, int id)
         {
             Servico servicoPorId = await BuscarPorId(id);

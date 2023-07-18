@@ -16,7 +16,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Models
         //    this.descricao = descricao;
         //}
 
-
+        [JsonConstructor()]
         public Cirurgia() : base() { }
     }
 }
