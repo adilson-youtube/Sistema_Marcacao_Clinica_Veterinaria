@@ -19,48 +19,48 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Repositories
             return await _dbContext.Exames.ToListAsync();
         }
 
-        public async Task<Exame> BuscarPorId(int id)
+        public async Task<Exame> BuscarPorId(int Id)
         {
-            return await _dbContext.Exames.FirstOrDefaultAsync(x => x.id == id);
+            return await _dbContext.Exames.FirstOrDefaultAsync(x => x.Id == Id);
         }
 
-        public async Task<Exame> Adicionar(Exame exame)
+        public async Task<Exame> Adicionar(Exame Exame)
         {
-            await _dbContext.Exames.AddAsync(exame);
+            await _dbContext.Exames.AddAsync(Exame);
             _dbContext.SaveChanges();
-            return exame;
+            return Exame;
         }
 
-        public async Task<Exame> Actualizar(Exame exame, int id)
+        public async Task<Exame> Actualizar(Exame Exame, int Id)
         {
-            Exame examePorId = await BuscarPorId(id);
-            if (examePorId == null)
+            Exame ExamePorId = await BuscarPorId(Id);
+            if (ExamePorId == null)
             {
-                throw new Exception($"Exame com o id {id} não foi encontrado na BD");
+                throw new Exception($"Exame com o id {Id} não foi encontrado na BD");
             }
 
-            //examePorId.tipoExame = examePorId.tipoExame;
-            examePorId.descricao = examePorId.descricao;
+            //ExamePorId.tipoExame = Exame.tipoExame;
+            ExamePorId.Descricao = Exame.Descricao;
 
-            examePorId.data = examePorId.data;
-            examePorId.preco = examePorId.preco;
-            examePorId.tipoPagamento = examePorId.tipoPagamento;
-            //examePorId.marcacoes = examePorId.marcacoes;
+            ExamePorId.Data = Exame.Data;
+            ExamePorId.Preco = Exame.Preco;
+            ExamePorId.TipoPagamento = Exame.TipoPagamento;
+            //ExamePorId.marcacoes = Exame.marcacoes;
 
-            _dbContext.Exames.Update(examePorId);
+            _dbContext.Exames.Update(ExamePorId);
             _dbContext.SaveChanges();
-            return examePorId;
+            return ExamePorId;
         }
 
-        public async Task<bool> Apagar(int id)
+        public async Task<bool> Apagar(int Id)
         {
-            Exame examePorId = await BuscarPorId(id);
-            if (examePorId == null)
+            Exame ExamePorId = await BuscarPorId(Id);
+            if (ExamePorId == null)
             {
-                throw new Exception($"Exame com o id {id} não foi encontrado na BD");
+                throw new Exception($"Exame com o id {Id} não foi encontrado na BD");
             }
 
-            _dbContext.Exames.Remove(examePorId);
+            _dbContext.Exames.Remove(ExamePorId);
             await _dbContext.SaveChangesAsync();
             return true;
         }

@@ -2,12 +2,12 @@
 {
     public class Veterinario
     {
-        public int id { get; set; }
-        public string? nome { get; set; }
-        public string? genero { get; set; }
-        public string? especialidade { get; set; }
-        public Usuario? usuario { get; set; } = new Usuario();
-        public ICollection<Marcacao>? marcacoes { get; set; }
-        public int? usuarioId { get; set; }
+        public int Id { get; set; }
+        public string? Nome { get; set; }
+        public string? Genero { get; set; }
+        public string? Especialidade { get; set; }
+        public Usuario? Usuario { get; set; } = new Usuario();
+        public ICollection<Marcacao>? Marcacoes { get; set; }
+        public int? UsuarioId { get; set; }
     }
 }

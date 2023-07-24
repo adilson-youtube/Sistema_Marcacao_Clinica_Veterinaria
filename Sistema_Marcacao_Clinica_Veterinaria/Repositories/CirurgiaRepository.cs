@@ -19,48 +19,48 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Repositories
             return await _dbContext.Cirurgias.ToListAsync();
         }
 
-        public async Task<Cirurgia> BuscarPorId(int id)
+        public async Task<Cirurgia> BuscarPorId(int Id)
         {
-            return await _dbContext.Cirurgias.FirstOrDefaultAsync(x => x.id == id);
+            return await _dbContext.Cirurgias.FirstOrDefaultAsync(x => x.Id == Id);
         }
 
-        public async Task<Cirurgia> Adicionar(Cirurgia cirurgia)
+        public async Task<Cirurgia> Adicionar(Cirurgia Cirurgia)
         {
-            await _dbContext.Cirurgias.AddAsync(cirurgia);
+            await _dbContext.Cirurgias.AddAsync(Cirurgia);
             _dbContext.SaveChangesAsync();
-            return cirurgia;
+            return Cirurgia;
         }
 
-        public async Task<Cirurgia> Actualizar(Cirurgia cirurgia, int id)
+        public async Task<Cirurgia> Actualizar(Cirurgia Cirurgia, int Id)
         {
-            Cirurgia cirurgiaPorId = await BuscarPorId(id);
-            if (cirurgiaPorId == null)
+            Cirurgia CirurgiaPorId = await BuscarPorId(Id);
+            if (CirurgiaPorId == null)
             {
-                throw new Exception($"Cirurgia com o id {id} não foi encontrado na BD");
+                throw new Exception($"Cirurgia com o id {Id} não foi encontrado na BD");
             }
 
-            //cirurgiaPorId.tipoCirurgia = cirurgiaPorId.tipoCirurgia;
-            cirurgiaPorId.descricao = cirurgiaPorId.descricao;
+            //CirurgiaPorId.tipoCirurgia = Cirurgia.tipoCirurgia;
+            CirurgiaPorId.Descricao = Cirurgia.Descricao;
 
-            cirurgiaPorId.data = cirurgiaPorId.data;
-            cirurgiaPorId.preco = cirurgiaPorId.preco;
-            cirurgiaPorId.tipoPagamento = cirurgiaPorId.tipoPagamento;
+            CirurgiaPorId.Data = Cirurgia.Data;
+            CirurgiaPorId.Preco = Cirurgia.Preco;
+            CirurgiaPorId.TipoPagamento = Cirurgia.TipoPagamento;
             //cirurgiaPorId.marcacoes = cirurgiaPorId.marcacoes;
 
-            _dbContext.Cirurgias.Update(cirurgiaPorId);
+            _dbContext.Cirurgias.Update(CirurgiaPorId);
             _dbContext.SaveChanges();
-            return cirurgiaPorId;
+            return CirurgiaPorId;
         }
 
-        public async Task<bool> Apagar(int id)
+        public async Task<bool> Apagar(int Id)
         {
-            Cirurgia cirurgiaPorId = await BuscarPorId(id);
-            if (cirurgiaPorId == null)
+            Cirurgia CirurgiaPorId = await BuscarPorId(Id);
+            if (CirurgiaPorId == null)
             {
-                throw new Exception($"Cirurgia com o id {id} não foi encontrado na BD");
+                throw new Exception($"Cirurgia com o id {Id} não foi encontrado na BD");
             }
 
-            _dbContext.Cirurgias.Remove(cirurgiaPorId);
+            _dbContext.Cirurgias.Remove(CirurgiaPorId);
             await _dbContext.SaveChangesAsync();
             return true;
         }

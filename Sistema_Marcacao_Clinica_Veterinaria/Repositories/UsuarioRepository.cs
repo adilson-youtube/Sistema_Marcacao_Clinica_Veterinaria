@@ -19,45 +19,45 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Repositories
             return await _dbContext.Usuarios.ToListAsync();
         }
 
-        public async Task<Usuario> BuscarPorId(int id)
+        public async Task<Usuario> BuscarPorId(int Id)
         {
-            return await _dbContext.Usuarios.FirstOrDefaultAsync(x => x.id == id);
+            return await _dbContext.Usuarios.FirstOrDefaultAsync(x => x.Id == Id);
         }
 
-        public async Task<Usuario> Adicionar(Usuario usuario)
+        public async Task<Usuario> Adicionar(Usuario Usuario)
         {
-            await _dbContext.Usuarios.AddAsync(usuario);
+            await _dbContext.Usuarios.AddAsync(Usuario);
             _dbContext.SaveChangesAsync();
-            return usuario;
+            return Usuario;
         }
 
-        public async Task<Usuario> Actualizar(Usuario usuario, int id)
+        public async Task<Usuario> Actualizar(Usuario Usuario, int Id)
         {
-            Usuario usuarioPorId = await BuscarPorId(id);
-            if (usuarioPorId == null)
+            Usuario UsuarioPorId = await BuscarPorId(Id);
+            if (UsuarioPorId == null)
             {
-                throw new Exception($"Usuario com o id {id} não foi encontrado na BD");
+                throw new Exception($"Usuario com o id {Id} não foi encontrado na BD");
             }
 
-            usuarioPorId.usuario = usuarioPorId.usuario;
-            usuarioPorId.senha = usuarioPorId.senha;
-            usuarioPorId.dataCriacao = usuarioPorId.dataCriacao;
-            usuarioPorId.ultimoAcesso = usuarioPorId.ultimoAcesso;
+            UsuarioPorId.NomeUsuario = Usuario.NomeUsuario;
+            UsuarioPorId.Senha = Usuario.Senha;
+            UsuarioPorId.DataCriacao = Usuario.DataCriacao;
+            UsuarioPorId.UltimoAcesso = Usuario.UltimoAcesso;
 
-            _dbContext.Usuarios.Update(usuarioPorId);
+            _dbContext.Usuarios.Update(UsuarioPorId);
             _dbContext.SaveChangesAsync();
-            return usuarioPorId;
+            return UsuarioPorId;
         }
 
-        public async Task<bool> Apagar(int id)
+        public async Task<bool> Apagar(int Id)
         {
-            Usuario usuarioPorId = await BuscarPorId(id);
-            if (usuarioPorId == null)
+            Usuario UsuarioPorId = await BuscarPorId(Id);
+            if (UsuarioPorId == null)
             {
-                throw new Exception($"Usuario com o id {id} não foi encontrado na BD");
+                throw new Exception($"Usuario com o id {Id} não foi encontrado na BD");
             }
 
-            _dbContext.Usuarios.Remove(usuarioPorId);
+            _dbContext.Usuarios.Remove(UsuarioPorId);
             await _dbContext.SaveChangesAsync();
             return true;
         }

@@ -5,17 +5,17 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Models
 {
     public class Proprietario
     {
-        public int id { get; set; }
-        public string? nome { get; set; } = string.Empty;
-        public string? telefone { get; set;}
-        public string? genero { get; set;}
-        public DateTime? dataNascimento { get; set; } = new DateTime();
-        public Endereco? endereco { get; set; }
+        public int Id { get; set; }
+        public string? Nome { get; set; } = string.Empty;
+        public string? Telefone { get; set;}
+        public string? Genero { get; set;}
+        public DateTime? DataNascimento { get; set; } = new DateTime();
+        public Endereco? Endereco { get; set; }
 
         //[CascadingParameter]
-        public Usuario? usuario { get; set; } = new Usuario();
-        public ICollection<Animal>? animais { get; set; } = new HashSet<Animal>();
-        public int? usuarioId { get; set; }
+        public Usuario? Usuario { get; set; } = new Usuario();
+        public ICollection<Animal>? Animais { get; set; } = new HashSet<Animal>();
+        public int? UsuarioId { get; set; }
 
     }
 }

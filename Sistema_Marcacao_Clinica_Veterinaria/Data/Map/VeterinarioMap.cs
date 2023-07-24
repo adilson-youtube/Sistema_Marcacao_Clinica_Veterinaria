@@ -9,9 +9,9 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Data.Map
         public void Configure(EntityTypeBuilder<Veterinario> builder)
         {
             //builder.HasKey(p => p.id);
-            builder.Property(p => p.nome);
-            builder.Property(p => p.especialidade);
-            builder.HasMany(p => p.marcacoes).WithOne(p => p.veterinario).HasForeignKey("veterinarioId");
+            builder.Property(p => p.Nome);
+            builder.Property(p => p.Especialidade);
+            builder.HasMany(p => p.Marcacoes).WithOne(p => p.Veterinario).HasForeignKey("VeterinarioId");
         }
     }
 }

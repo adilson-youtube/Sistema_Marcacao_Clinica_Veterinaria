@@ -19,47 +19,47 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Repositories
             return await _dbContext.Marcacoes.ToListAsync();
         }
 
-        public async Task<Marcacao> BuscarPorId(int id)
+        public async Task<Marcacao> BuscarPorId(int Id)
         {
-            return await _dbContext.Marcacoes.FirstOrDefaultAsync(x => x.id == id);
+            return await _dbContext.Marcacoes.FirstOrDefaultAsync(x => x.Id == Id);
         }
 
-        public async Task<Marcacao> Adicionar(Marcacao marcacao)
+        public async Task<Marcacao> Adicionar(Marcacao Marcacao)
         {
-            await _dbContext.Marcacoes.AddAsync(marcacao);
+            await _dbContext.Marcacoes.AddAsync(Marcacao);
             _dbContext.SaveChanges();
-            return marcacao;
+            return Marcacao;
         }
 
-        public async Task<Marcacao> Actualizar(Marcacao marcacao, int id)
+        public async Task<Marcacao> Actualizar(Marcacao Marcacao, int Id)
         {
-            Marcacao marcacaoPorId = await BuscarPorId(id);
-            if (marcacaoPorId == null)
+            Marcacao MarcacaoPorId = await BuscarPorId(Id);
+            if (MarcacaoPorId == null)
             {
-                throw new Exception($"Especie com o id {id} não foi encontrado na BD");
+                throw new Exception($"Especie com o id {Id} não foi encontrado na BD");
             }
 
-            marcacaoPorId.diaSemana = marcacaoPorId.diaSemana;
-            marcacaoPorId.diaMes = marcacaoPorId.diaMes;
-            marcacaoPorId.ano = marcacaoPorId.ano;
-            marcacaoPorId.animal = marcacaoPorId.animal;
-            marcacaoPorId.veterinario = marcacaoPorId.veterinario;
+            MarcacaoPorId.DiaSemana = Marcacao.DiaSemana;
+            MarcacaoPorId.DiaMes = Marcacao.DiaMes;
+            MarcacaoPorId.Ano = Marcacao.Ano;
+            MarcacaoPorId.Animal = Marcacao.Animal;
+            MarcacaoPorId.Veterinario = Marcacao.Veterinario;
             //marcacaoPorId.servicos = marcacaoPorId.servicos;
 
-            _dbContext.Marcacoes.Update(marcacaoPorId);
+            _dbContext.Marcacoes.Update(MarcacaoPorId);
             _dbContext.SaveChanges();
-            return marcacaoPorId;
+            return MarcacaoPorId;
         }
 
-        public async Task<bool> Apagar(int id)
+        public async Task<bool> Apagar(int Id)
         {
-            Marcacao marcacaoPorId = await BuscarPorId(id);
-            if (marcacaoPorId == null)
+            Marcacao MarcacaoPorId = await BuscarPorId(Id);
+            if (MarcacaoPorId == null)
             {
-                throw new Exception($"Marcacao com o id {id} não foi encontrado na BD");
+                throw new Exception($"Marcacao com o id {Id} não foi encontrado na BD");
             }
 
-            _dbContext.Marcacoes.Remove(marcacaoPorId);
+            _dbContext.Marcacoes.Remove(MarcacaoPorId);
             await _dbContext.SaveChangesAsync();
             return true;
         }

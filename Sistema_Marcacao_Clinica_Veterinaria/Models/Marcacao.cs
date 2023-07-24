@@ -1,14 +1,18 @@
-﻿namespace Sistema_Marcacao_Clinica_Veterinaria.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Sistema_Marcacao_Clinica_Veterinaria.Models
 {
     public class Marcacao
     {
-        public int id { get; set; }
-        public DateTime? diaSemana { get; set; }
-        public DateTime? diaMes { get; set; }
-        public DateTime? ano { get; set; }
-        public Animal? animal { get; set; }
-        public Veterinario? veterinario { get; set; } = new Veterinario();
-        public ICollection<Servico>? servicos { get; set; } = new HashSet<Servico>();
+        public int Id { get; set; }
+        public DateTime? DiaSemana { get; set; }
+        public DateTime? DiaMes { get; set; }
+        public DateTime? Ano { get; set; }
+        public Animal? Animal { get; set; }
+        public Animal? AnimalID { get; set; }
+        public Veterinario? Veterinario { get; set; } = new Veterinario();
+
+        public ICollection<Servico>? Servicos { get; set; } = new HashSet<Servico>();
 
         public Marcacao() { }
     }
