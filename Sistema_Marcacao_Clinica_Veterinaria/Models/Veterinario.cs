@@ -1,4 +1,6 @@
-﻿namespace Sistema_Marcacao_Clinica_Veterinaria.Models
+﻿using Microsoft.AspNetCore.Components;
+
+namespace Sistema_Marcacao_Clinica_Veterinaria.Models
 {
     public class Veterinario
     {
@@ -7,6 +9,8 @@
         public string? Genero { get; set; }
         public string? Especialidade { get; set; }
         public Usuario? Usuario { get; set; } = new Usuario();
+
+        [CascadingParameter]
         public ICollection<Marcacao>? Marcacoes { get; set; }
         public int? UsuarioId { get; set; }
     }

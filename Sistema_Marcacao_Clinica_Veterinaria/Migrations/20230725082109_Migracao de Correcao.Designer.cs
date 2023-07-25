@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Sistema_Marcacao_Clinica_Veterinaria.Data;
@@ -11,9 +12,11 @@ using Sistema_Marcacao_Clinica_Veterinaria.Data;
 namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
 {
     [DbContext(typeof(MarcacaoClinicaVeterinariaDBContext))]
-    partial class MarcacaoClinicaVeterinariaDBContextModelSnapshot : ModelSnapshot
+    [Migration("20230725082109_Migracao de Correcao")]
+    partial class MigracaodeCorrecao
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

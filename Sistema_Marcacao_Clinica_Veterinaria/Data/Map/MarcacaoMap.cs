@@ -12,8 +12,11 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Data.Map
             builder.Property(p => p.DiaSemana);
             builder.Property(p => p.DiaMes);
             builder.Property(p => p.Ano);
-            builder.HasOne(p => p.Animal).WithMany(p => p.Marcacoes).HasForeignKey("AnimalId");
-            builder.HasOne(p => p.Veterinario).WithMany(p => p.Marcacoes).HasForeignKey("VeterinarioId");
+            //builder.HasOne(p => p.Animal).WithMany(p => p.Marcacoes).HasForeignKey("AnimalId");
+            builder.HasOne(p => p.Animal).WithMany(p => p.Marcacoes).HasForeignKey(m => m.AnimalID);
+            //builder.HasOne(p => p.Veterinario).WithMany(p => p.Marcacoes).HasForeignKey("VeterinarioId");
+            builder.HasOne(p => p.Veterinario).WithMany(p => p.Marcacoes).HasForeignKey(m => m.VeterinarioID);
+            //builder.Ignore(p => p.);
             builder.HasMany(p => p.Servicos).WithMany(p => p.Marcacoes).UsingEntity(
                 "Marcacao_Servico",
                 //k => k.Property(),
