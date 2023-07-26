@@ -17,6 +17,13 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Data.Map
             //builder.HasOne(p => p.Veterinario).WithMany(p => p.Marcacoes).HasForeignKey("VeterinarioId");
             builder.HasOne(p => p.Veterinario).WithMany(p => p.Marcacoes).HasForeignKey(m => m.VeterinarioID);
             //builder.Ignore(p => p.);
+
+            //builder.HasMany(p => p.Servicos).WithMany(p => p.Marcacoes).UsingEntity<MarcacaoServico>(
+            //    "Marcacao_Servico",
+            //    l => l.HasOne<Servico>().WithMany().HasForeignKey("ServicoId").HasPrincipalKey(nameof(Servico.Id)),
+            //    r => r.HasOne(typeof(Marcacao)).WithMany().HasForeignKey("MarcacaoId").HasPrincipalKey(nameof(Marcacao.Id)),
+            //    j => j.HasKey("ServicoId", "MarcacaoId"));
+
             builder.HasMany(p => p.Servicos).WithMany(p => p.Marcacoes).UsingEntity(
                 "Marcacao_Servico",
                 //k => k.Property(),

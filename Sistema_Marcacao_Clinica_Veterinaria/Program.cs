@@ -43,6 +43,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria
             builder.Services.AddScoped<IEspecieRepository, EspecieRepository>();
             builder.Services.AddScoped<IExameRepository, ExameRepository>();
             builder.Services.AddScoped<IMarcacaoRepository, MarcacaoRepository>();
+            builder.Services.AddScoped<IMarcacaoServicoRepository, MarcacaoServicoRepository>();
             builder.Services.AddScoped<IProprietarioRepository, ProprietarioRepository>();
             builder.Services.AddScoped<IServicoRepository, ServicoRepository>();
             builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
@@ -56,6 +57,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria
             builder.Services.AddScoped<IEspecieService, EspecieService>();
             builder.Services.AddScoped<IExameService, ExameService>();
             builder.Services.AddScoped<IMarcacaoService, MarcacaoService>();
+            builder.Services.AddScoped<IMarcacaoServicoService, MarcacaoServicoService>();
             builder.Services.AddScoped<IProprietarioService, ProprietarioService>();
             builder.Services.AddScoped<IServicoService, ServicoService>();
             builder.Services.AddScoped<IUsuarioService, UsuarioService>();

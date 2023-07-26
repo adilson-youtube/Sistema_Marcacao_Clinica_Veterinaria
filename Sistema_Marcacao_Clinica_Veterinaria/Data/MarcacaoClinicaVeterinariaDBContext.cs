@@ -16,6 +16,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Data
         public DbSet<Animal> Animais { get; set; }
         public DbSet<Especie> Especies { get; set; }
         public DbSet<Marcacao> Marcacoes { get; set; }
+        public DbSet<MarcacaoServico> MarcacoesServicos { get; set; }
         public DbSet<Veterinario> Veterinarios { get; set; }
         public DbSet<Servico> Servicos { get; set; }
         public DbSet<Vacina> Vacinas { get; set; }
