@@ -18,18 +18,16 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Data.Map
             builder.HasOne(p => p.Veterinario).WithMany(p => p.Marcacoes).HasForeignKey(m => m.VeterinarioID);
             //builder.Ignore(p => p.);
 
-            //builder.HasMany(p => p.Servicos).WithMany(p => p.Marcacoes).UsingEntity<MarcacaoServico>(
+
+            builder.HasMany(p => p.MarcacoesServicos).WithOne(p => p.Marcacao).HasForeignKey(fk => fk.MarcacaoId);
+
+
+            //builder.HasMany(p => p.Servicos).WithMany(p => p.Marcacoes).UsingEntity(
             //    "Marcacao_Servico",
-            //    l => l.HasOne<Servico>().WithMany().HasForeignKey("ServicoId").HasPrincipalKey(nameof(Servico.Id)),
+            //    //k => k.Property(),
+            //    l => l.HasOne(typeof(Servico)).WithMany().HasForeignKey("ServicoId").HasPrincipalKey(nameof(Servico.Id)),
             //    r => r.HasOne(typeof(Marcacao)).WithMany().HasForeignKey("MarcacaoId").HasPrincipalKey(nameof(Marcacao.Id)),
             //    j => j.HasKey("ServicoId", "MarcacaoId"));
-
-            builder.HasMany(p => p.Servicos).WithMany(p => p.Marcacoes).UsingEntity(
-                "Marcacao_Servico",
-                //k => k.Property(),
-                l => l.HasOne(typeof(Servico)).WithMany().HasForeignKey("ServicoId").HasPrincipalKey(nameof(Servico.Id)),
-                r => r.HasOne(typeof(Marcacao)).WithMany().HasForeignKey("MarcacaoId").HasPrincipalKey(nameof(Marcacao.Id)),
-                j => j.HasKey("ServicoId", "MarcacaoId"));
         }
     }
 }

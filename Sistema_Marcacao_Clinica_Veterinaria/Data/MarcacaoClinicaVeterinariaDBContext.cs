@@ -34,17 +34,18 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Data
             modelBuilder.ApplyConfiguration(new EspecieMap());
             modelBuilder.ApplyConfiguration(new MarcacaoMap());
             modelBuilder.ApplyConfiguration(new VeterinarioMap());
-            //modelBuilder.ApplyConfiguration(new VacinaMap());
-            //modelBuilder.ApplyConfiguration(new ConsultaMap());
-            //modelBuilder.ApplyConfiguration(new ExameMap());
-            //modelBuilder.ApplyConfiguration(new CirurgiaMap());
+            modelBuilder.ApplyConfiguration(new VacinaMap());
+            modelBuilder.ApplyConfiguration(new ConsultaMap());
+            modelBuilder.ApplyConfiguration(new ExameMap());
+            modelBuilder.ApplyConfiguration(new CirurgiaMap());
+            //modelBuilder.Entity<MarcacaoServico>().UseTpcMappingStrategy();
             //modelBuilder.Entity<Servico>().ToTable("Servicos").UseTptMappingStrategy();
             //modelBuilder.Entity<Servico>().UseTpcMappingStrategy();
             //modelBuilder.Entity<Usuario>().UseTptMappingStrategy();
             //modelBuilder.Entity<Endereco>().HasOne(e => e.proprietario).WithOne(e => e.endereco).HasForeignKey("proprietarioId");
 
             //modelBuilder.Entity<Servico>().ToTable("Servicos").UseTptMappingStrategy<Servico>();
-            modelBuilder.Entity<Servico>().UseTptMappingStrategy().ToTable("Servicos");
+            //modelBuilder.Entity<Servico>().UseTptMappingStrategy().ToTable("Servicos");
 
             //modelBuilder.Entity<Exame>().UseTptMappingStrategy().ToTable("Exames");
             //modelBuilder.Entity<Cirurgia>().UseTptMappingStrategy().ToTable("Cirurgias");

@@ -12,6 +12,11 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Data.Map
             builder.Property(p => p.Data);
             builder.Property(p => p.Preco);
             builder.Property(p => p.TipoPagamento);
+
+
+            builder.HasMany(r => r.MarcacoesServicos).WithOne(c => c.Servico).HasForeignKey(fk => fk.ServicoId);
+
+
             //builder.HasMany(p => p.marcacoes).WithMany(p => p.servicos).UsingEntity(
             //    "Marcacao_Servico",
             //    l => l.HasOne(typeof(Marcacao)).WithMany().HasForeignKey("marcacaoId").HasPrincipalKey(nameof(Marcacao.id)),

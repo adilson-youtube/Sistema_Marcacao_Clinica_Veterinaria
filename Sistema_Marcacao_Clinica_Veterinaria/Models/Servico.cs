@@ -10,7 +10,10 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Models
         public double? Preco { get; set; }
         public string? TipoServico { get; set; }
         public TipoPagamento? TipoPagamento { get; set; }
+        [JsonIgnore]
         public ICollection<Marcacao>? Marcacoes { get; set; } = new HashSet<Marcacao>();
+        public ICollection<MarcacaoServico>? MarcacoesServicos { get; set; } = new HashSet<MarcacaoServico>();
+
 
         //[JsonConstructor]
         //protected Servico(DateTime data, double preco, string tipoServico, TipoPagamento tipoPagamento, ICollection<Marcacao> marcacoes) {
