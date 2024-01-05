@@ -10,7 +10,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Data.Map
         {
             //builder.HasKey(p => p.id);
             //builder.Property(p => p.tipoConsulta);
-            builder.Property(p => p.descricao);
+            builder.Property(p => p.Descricao);
         }
     }
 }

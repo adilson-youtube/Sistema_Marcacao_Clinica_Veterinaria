@@ -19,49 +19,49 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Repositories
             return await _dbContext.Vacinas.ToListAsync();
         }
 
-        public async Task<Vacina> BuscarPorId(int id)
+        public async Task<Vacina> BuscarPorId(int Id)
         {
-            return await _dbContext.Vacinas.FirstOrDefaultAsync(x => x.id == id);
+            return await _dbContext.Vacinas.FirstOrDefaultAsync(x => x.Id == Id);
         }
 
-        public async Task<Vacina> Adicionar(Vacina vacina)
+        public async Task<Vacina> Adicionar(Vacina Vacina)
         {
-            await _dbContext.Vacinas.AddAsync(vacina);
+            await _dbContext.Vacinas.AddAsync(Vacina);
             _dbContext.SaveChanges();
-            return vacina;
+            return Vacina;
         }
 
-        public async Task<Vacina> Actualizar(Vacina vacina, int id)
+        public async Task<Vacina> Actualizar(Vacina Vacina, int id)
         {
-            Vacina vacinaPorId = await BuscarPorId(id);
-            if (vacinaPorId == null)
+            Vacina VacinaPorId = await BuscarPorId(id);
+            if (VacinaPorId == null)
             {
                 throw new Exception($"Vacina com o id {id} não foi encontrado na BD");
             }
 
-            vacinaPorId.nome = vacinaPorId.nome;
-            vacinaPorId.periodo = vacinaPorId.periodo;
-            //vacinaPorId.tipoVacina = vacinaPorId.tipoVacina;
+            VacinaPorId.Nome = Vacina.Nome;
+            VacinaPorId.Periodo = Vacina.Periodo;
+            //VacinaPorId.tipoVacina = Vacina.tipoVacina;
 
-            vacinaPorId.data = vacinaPorId.data;
-            vacinaPorId.preco = vacinaPorId.preco;
-            vacinaPorId.tipoPagamento = vacinaPorId.tipoPagamento;
-            //vacinaPorId.marcacoes = vacinaPorId.marcacoes;
+            VacinaPorId.Data = Vacina.Data;
+            VacinaPorId.Preco = Vacina.Preco;
+            VacinaPorId.TipoPagamento = Vacina.TipoPagamento;
+            //VacinaPorId.Marcacoes = Vacina.Marcacoes;
 
-            _dbContext.Vacinas.Update(vacinaPorId);
+            _dbContext.Vacinas.Update(VacinaPorId);
             _dbContext.SaveChanges();
-            return vacinaPorId;
+            return VacinaPorId;
         }
 
-        public async Task<bool> Apagar(int id)
+        public async Task<bool> Apagar(int Id)
         {
-            Vacina vacinaPorId = await BuscarPorId(id);
-            if (vacinaPorId == null)
+            Vacina VacinaPorId = await BuscarPorId(Id);
+            if (VacinaPorId == null)
             {
-                throw new Exception($"Vacina com o id {id} não foi encontrado na BD");
+                throw new Exception($"Vacina com o id {Id} não foi encontrado na BD");
             }
 
-            _dbContext.Vacinas.Remove(vacinaPorId);
+            _dbContext.Vacinas.Remove(VacinaPorId);
             await _dbContext.SaveChangesAsync();
             return true;
         }

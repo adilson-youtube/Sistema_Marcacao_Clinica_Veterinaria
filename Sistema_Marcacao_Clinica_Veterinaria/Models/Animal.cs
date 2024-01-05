@@ -4,16 +4,18 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Models
 {
     public class Animal
     {
-        public int id { get; set; }
-        public string? nome { get; set; }
-        public string? sexo { get; set; }
-        public double? peso { get; set; }
-        public DateTime? dataNascimento { get; set; }
+        public int Id { get; set; }
+        public string? Nome { get; set; }
+        public string? Sexo { get; set; }
+        public double? Peso { get; set; }
+        public DateTime? DataNascimento { get; set; }
         [JsonIgnore]
-        public Especie? especie { get; set; }
+        public Especie? Especie { get; set; }
         [JsonIgnore]
-        public Proprietario? proprietario { get; set; }
-        public ICollection<Marcacao>? marcacoes { get; set; }
+        public Proprietario? Proprietario { get; set; }
+
+        [JsonIgnore]
+        public ICollection<Marcacao>? Marcacoes { get; set; }
 
         public Animal() { }
 

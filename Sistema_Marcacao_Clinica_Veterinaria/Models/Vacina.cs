@@ -7,8 +7,8 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Models
     public class Vacina : Servico
     {
         //public int id { get; set; }
-        public string? nome { get; set; }
-        public int? periodo { get; set; }
+        public string? Nome { get; set; }
+        public int? Periodo { get; set; }
         //public string? tipoVacina { get; set; }
 
         //[JsonConstructor]
@@ -19,7 +19,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Models
         //    this.periodo = periodo;
         //}
 
-        [JsonConstructor()]
-        public Vacina() : base() { }
+        //[JsonConstructor()]
+        //public Vacina() : base() { }
     }
 }

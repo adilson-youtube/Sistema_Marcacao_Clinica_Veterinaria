@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Sistema_Marcacao_Clinica_Veterinaria.Data;
@@ -11,9 +12,11 @@ using Sistema_Marcacao_Clinica_Veterinaria.Data;
 namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
 {
     [DbContext(typeof(MarcacaoClinicaVeterinariaDBContext))]
-    partial class MarcacaoClinicaVeterinariaDBContextModelSnapshot : ModelSnapshot
+    [Migration("20230724135440_Migracao Inicial")]
+    partial class MigracaoInicial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -124,7 +127,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("AnimalID")
+                    b.Property<int?>("AnimalIDId")
                         .HasColumnType("integer");
 
                     b.Property<int?>("AnimalId")
@@ -139,38 +142,18 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                     b.Property<DateTime?>("DiaSemana")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int?>("VeterinarioID")
-                        .HasColumnType("integer");
-
                     b.Property<int?>("VeterinarioId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AnimalID");
+                    b.HasIndex("AnimalIDId");
+
+                    b.HasIndex("AnimalId");
 
                     b.HasIndex("VeterinarioId");
 
                     b.ToTable("Marcacoes");
-                });
-
-            modelBuilder.Entity("Sistema_Marcacao_Clinica_Veterinaria.Models.MarcacaoServico", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("MarcacaoId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("ServicoId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("MarcacoesServicos");
                 });
 
             modelBuilder.Entity("Sistema_Marcacao_Clinica_Veterinaria.Models.Proprietario", b =>
@@ -371,15 +354,21 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
 
             modelBuilder.Entity("Sistema_Marcacao_Clinica_Veterinaria.Models.Marcacao", b =>
                 {
+                    b.HasOne("Sistema_Marcacao_Clinica_Veterinaria.Models.Animal", "AnimalID")
+                        .WithMany()
+                        .HasForeignKey("AnimalIDId");
+
                     b.HasOne("Sistema_Marcacao_Clinica_Veterinaria.Models.Animal", "Animal")
                         .WithMany("Marcacoes")
-                        .HasForeignKey("AnimalID");
+                        .HasForeignKey("AnimalId");
 
                     b.HasOne("Sistema_Marcacao_Clinica_Veterinaria.Models.Veterinario", "Veterinario")
                         .WithMany("Marcacoes")
                         .HasForeignKey("VeterinarioId");
 
                     b.Navigation("Animal");
+
+                    b.Navigation("AnimalID");
 
                     b.Navigation("Veterinario");
                 });

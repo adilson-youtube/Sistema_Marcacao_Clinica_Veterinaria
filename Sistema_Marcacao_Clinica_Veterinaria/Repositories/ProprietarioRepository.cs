@@ -16,49 +16,49 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Repositories
 
         public async Task<List<Proprietario>> ListarProprietarios()
         {
-            return await _dbContext.Proprietarios.Include(p => p.animais).ToListAsync();
+            return await _dbContext.Proprietarios.Include(p => p.Animais).ToListAsync();
         }
 
-        public async Task<Proprietario> BuscarPorId(int id)
+        public async Task<Proprietario> BuscarPorId(int Id)
         {
-            return await _dbContext.Proprietarios.FirstOrDefaultAsync(x => x.id == id);
+            return await _dbContext.Proprietarios.FirstOrDefaultAsync(x => x.Id == Id);
         }
 
-        public async Task<Proprietario> Adicionar(Proprietario proprietario)
+        public async Task<Proprietario> Adicionar(Proprietario Proprietario)
         {
-            await _dbContext.Proprietarios.AddAsync(proprietario);
+            await _dbContext.Proprietarios.AddAsync(Proprietario);
             _dbContext.SaveChanges();
-            return proprietario;
+            return Proprietario;
         }
 
-        public async Task<Proprietario> Actualizar(Proprietario proprietario, int id)
+        public async Task<Proprietario> Actualizar(Proprietario Proprietario, int Id)
         {
-            Proprietario proprietarioPorId = await BuscarPorId(id);
-            if (proprietarioPorId == null)
+            Proprietario ProprietarioPorId = await BuscarPorId(Id);
+            if (ProprietarioPorId == null)
             {
-                throw new Exception($"Proprietario com o id {id} não foi encontrado na BD");
+                throw new Exception($"Proprietario com o id {Id} não foi encontrado na BD");
             }
 
-            proprietarioPorId.nome = proprietarioPorId.nome;
-            proprietarioPorId.telefone = proprietarioPorId.telefone;
-            proprietarioPorId.dataNascimento = proprietarioPorId.dataNascimento;
-            proprietarioPorId.endereco = proprietarioPorId.endereco;
-            proprietarioPorId.animais = proprietarioPorId.animais;
+            ProprietarioPorId.Nome = Proprietario.Nome;
+            ProprietarioPorId.Telefone = Proprietario.Telefone;
+            ProprietarioPorId.DataNascimento = Proprietario.DataNascimento;
+            ProprietarioPorId.Endereco = Proprietario.Endereco;
+            ProprietarioPorId.Animais = Proprietario.Animais;
 
-            _dbContext.Proprietarios.Update(proprietarioPorId);
+            _dbContext.Proprietarios.Update(ProprietarioPorId);
             _dbContext.SaveChanges();
-            return proprietarioPorId;
+            return ProprietarioPorId;
         }
 
-        public async Task<bool> Apagar(int id)
+        public async Task<bool> Apagar(int Id)
         {
-            Proprietario proprietarioPorId = await BuscarPorId(id);
-            if (proprietarioPorId == null)
+            Proprietario ProprietarioPorId = await BuscarPorId(Id);
+            if (ProprietarioPorId == null)
             {
-                throw new Exception($"Proprietario com o id {id} não foi encontrado na BD");
+                throw new Exception($"Proprietario com o id {Id} não foi encontrado na BD");
             }
 
-            _dbContext.Proprietarios.Remove(proprietarioPorId);
+            _dbContext.Proprietarios.Remove(ProprietarioPorId);
             await _dbContext.SaveChangesAsync();
             return true;
         }

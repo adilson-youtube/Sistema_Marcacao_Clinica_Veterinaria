@@ -19,46 +19,46 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Repositories
             return await _dbContext.Enderecos.ToListAsync();
         }
 
-        public async Task<Endereco> BuscarPorId(int id)
+        public async Task<Endereco> BuscarPorId(int Id)
         {
-            return await _dbContext.Enderecos.FirstOrDefaultAsync(x => x.id == id);
+            return await _dbContext.Enderecos.FirstOrDefaultAsync(x => x.Id == Id);
         }
 
-        public async Task<Endereco> Adicionar(Endereco endereco)
+        public async Task<Endereco> Adicionar(Endereco Endereco)
         {
-            await _dbContext.Enderecos.AddAsync(endereco);
+            await _dbContext.Enderecos.AddAsync(Endereco);
             _dbContext.SaveChangesAsync();
-            return endereco;
+            return Endereco;
         }
 
-        public async Task<Endereco> Actualizar(Endereco endereco, int id)
+        public async Task<Endereco> Actualizar(Endereco Endereco, int Id)
         {
-            Endereco enderecoPorId = await BuscarPorId(id);
-            if(enderecoPorId == null) 
+            Endereco EnderecoPorId = await BuscarPorId(Id);
+            if(EnderecoPorId == null) 
             {
-                throw new Exception($"Endereço com o id {id} não foi encontrado na BD");
+                throw new Exception($"Endereço com o id {Id} não foi encontrado na BD");
             }
 
-            enderecoPorId.proprietario = endereco.proprietario;
-            //enderecoPorId.provincia = endereco.provincia;
-            enderecoPorId.municipio = endereco.municipio;
-            enderecoPorId.bairro = endereco.bairro;
-            enderecoPorId.rua = endereco.rua;
+            EnderecoPorId.Proprietario = Endereco.Proprietario;
+            //enderecoPorId.provincia = Endereco.provincia;
+            EnderecoPorId.Municipio = Endereco.Municipio;
+            EnderecoPorId.Bairro = Endereco.Bairro;
+            EnderecoPorId.Rua = Endereco.Rua;
 
-            _dbContext.Enderecos.Update(enderecoPorId);
+            _dbContext.Enderecos.Update(EnderecoPorId);
             _dbContext.SaveChangesAsync();
-            return enderecoPorId;
+            return EnderecoPorId;
         }
 
-        public async Task<bool> Apagar(int id)
+        public async Task<bool> Apagar(int Id)
         {
-            Endereco enderecoPorId = await BuscarPorId(id);
-            if (enderecoPorId == null)
+            Endereco EnderecoPorId = await BuscarPorId(Id);
+            if (EnderecoPorId == null)
             {
-                throw new Exception($"Endereço com o id {id} não foi encontrado na BD");
+                throw new Exception($"Endereço com o id {Id} não foi encontrado na BD");
             }
 
-            _dbContext.Enderecos.Remove(enderecoPorId);
+            _dbContext.Enderecos.Remove(EnderecoPorId);
             await _dbContext.SaveChangesAsync();
             return true;
 
