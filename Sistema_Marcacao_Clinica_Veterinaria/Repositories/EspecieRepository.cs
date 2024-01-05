@@ -19,40 +19,40 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Repositories
             return await _dbContext.Especies.ToListAsync();
         }
 
-        public async Task<Especie> BuscarPorId(int id)
+        public async Task<Especie> BuscarPorId(int Id)
         {
-            return await _dbContext.Especies.FirstOrDefaultAsync(x => x.id == id);
+            return await _dbContext.Especies.FirstOrDefaultAsync(x => x.Id == Id);
         }
 
-        public async Task<Especie> Adicionar(Especie especie)
+        public async Task<Especie> Adicionar(Especie Especie)
         {
-            await _dbContext.Especies.AddAsync(especie);
+            await _dbContext.Especies.AddAsync(Especie);
             _dbContext.SaveChangesAsync();
-            return especie;
+            return Especie;
         }
 
-        public async Task<Especie> Actualizar(Especie especie, int id)
+        public async Task<Especie> Actualizar(Especie Especie, int Id)
         {
-            Especie especiePorId = await BuscarPorId(id);
-            if (especiePorId == null)
+            Especie EspeciePorId = await BuscarPorId(Id);
+            if (EspeciePorId == null)
             {
-                throw new Exception($"Especie com o id {id} não foi encontrado na BD");
+                throw new Exception($"Especie com o id {Id} não foi encontrado na BD");
             }
 
-            especiePorId.raca = especiePorId.raca;
-            especiePorId.animais = especiePorId.animais;
+            EspeciePorId.Raca = Especie.Raca;
+            EspeciePorId.Animais = Especie.Animais;
 
-            _dbContext.Especies.Update(especiePorId);
+            _dbContext.Especies.Update(EspeciePorId);
             _dbContext.SaveChangesAsync();
-            return especiePorId;
+            return EspeciePorId;
         }
 
-        public async Task<bool> Apagar(int id)
+        public async Task<bool> Apagar(int Id)
         {
-            Especie especiePorId = await BuscarPorId(id);
+            Especie especiePorId = await BuscarPorId(Id);
             if (especiePorId == null)
             {
-                throw new Exception($"Especie com o id {id} não foi encontrado na BD");
+                throw new Exception($"Especie com o id {Id} não foi encontrado na BD");
             }
 
             _dbContext.Especies.Remove(especiePorId);

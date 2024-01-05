@@ -5,9 +5,9 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Models
 {
     public class Exame : Servico
     {
-        //public int id { get; set; }
-        //public string? tipoExame { get; set; }
-        public string? descricao { get; set; }
+        //public int Id { get; set; }
+        //public string? TipoExame { get; set; }
+        public string? Descricao { get; set; }
 
         //[JsonConstructor]
         //public Exame(string descricao, DateTime data, double preco, string tipoServico, TipoPagamento tipoPagamento, ICollection<Marcacao> marcacoes)
@@ -16,7 +16,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Models
         //    this.descricao = descricao;
         //}
 
-        [JsonConstructor()]
-        public Exame() : base() { }
+        //[JsonConstructor()]
+        //public Exame() : base() { }
     }
 }

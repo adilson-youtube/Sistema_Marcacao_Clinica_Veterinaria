@@ -16,50 +16,50 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Repositories
 
         public async Task<List<Animal>> ListarAnimais()
         {
-            return await _dbContext.Animais.Include(p => p.proprietario).ToListAsync();
+            return await _dbContext.Animais.Include(p => p.Proprietario).ToListAsync();
         }
 
-        public async Task<Animal> BuscarPorId(int id)
+        public async Task<Animal> BuscarPorId(int Id)
         {
-            return await _dbContext.Animais.FirstOrDefaultAsync(x => x.id == id);
+            return await _dbContext.Animais.FirstOrDefaultAsync(x => x.Id == Id);
         }
 
-        public async Task<Animal> Adicionar(Animal animal)
+        public async Task<Animal> Adicionar(Animal Animal)
         {
-            await _dbContext.Animais.AddAsync(animal);
+            await _dbContext.Animais.AddAsync(Animal);
             _dbContext.SaveChangesAsync();
-            return animal;
+            return Animal;
         }
 
-        public async Task<Animal> Actualizar(Animal animal, int id)
+        public async Task<Animal> Actualizar(Animal Animal, int Id)
         {
-            Animal animalPorId = await BuscarPorId(id);
-            if (animalPorId == null)
+            Animal AnimalPorId = await BuscarPorId(Id);
+            if (AnimalPorId == null)
             {
-                throw new Exception($"Animal com o id {id} não foi encontrado na BD");
+                throw new Exception($"Animal com o id {Id} não foi encontrado na BD");
             }
 
-            animalPorId.proprietario = animalPorId.proprietario;
-            animalPorId.nome = animalPorId.nome;
-            animalPorId.sexo = animalPorId.sexo;
-            animalPorId.dataNascimento = animalPorId.dataNascimento;
-            animalPorId.especie = animalPorId.especie;
-            animalPorId.marcacoes = animalPorId.marcacoes;
+            AnimalPorId.Proprietario = Animal.Proprietario;
+            AnimalPorId.Nome = Animal.Nome;
+            AnimalPorId.Sexo = Animal.Sexo;
+            AnimalPorId.DataNascimento = Animal.DataNascimento;
+            AnimalPorId.Especie = Animal.Especie;
+            AnimalPorId.Marcacoes = Animal.Marcacoes;
 
-            _dbContext.Animais.Update(animalPorId);
+            _dbContext.Animais.Update(AnimalPorId);
             _dbContext.SaveChangesAsync();
-            return animalPorId;
+            return AnimalPorId;
         }
 
-        public async Task<bool> Apagar(int id)
+        public async Task<bool> Apagar(int Id)
         {
-            Animal animalPorId = await BuscarPorId(id);
-            if (animalPorId == null)
+            Animal AnimalPorId = await BuscarPorId(Id);
+            if (AnimalPorId == null)
             {
-                throw new Exception($"Animal com o id {id} não foi encontrado na BD");
+                throw new Exception($"Animal com o id {Id} não foi encontrado na BD");
             }
 
-            _dbContext.Animais.Remove(animalPorId);
+            _dbContext.Animais.Remove(AnimalPorId);
             await _dbContext.SaveChangesAsync();
             return true;
         }

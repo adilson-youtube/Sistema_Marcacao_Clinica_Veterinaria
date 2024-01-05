@@ -8,15 +8,15 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Data.Map
     {
         public void Configure(EntityTypeBuilder<Servico> builder)
         {
-            builder.HasKey(p => p.id);
-            builder.Property(p => p.data);
-            builder.Property(p => p.preco);
-            builder.Property(p => p.tipoPagamento);
-            builder.HasMany(p => p.marcacoes).WithMany(p => p.servicos).UsingEntity(
-                "Marcacao_Servico",
-                l => l.HasOne(typeof(Marcacao)).WithMany().HasForeignKey("marcacaoId").HasPrincipalKey(nameof(Marcacao.id)),
-                r => r.HasOne(typeof(Servico)).WithMany().HasForeignKey("servicoId").HasPrincipalKey(nameof(Servico.id)),
-                j => j.HasKey("servicoId", "marcacaoId"));
+            builder.HasKey(p => p.Id);
+            builder.Property(p => p.Data);
+            builder.Property(p => p.Preco);
+            builder.Property(p => p.TipoPagamento);
+            //builder.HasMany(p => p.marcacoes).WithMany(p => p.servicos).UsingEntity(
+            //    "Marcacao_Servico",
+            //    l => l.HasOne(typeof(Marcacao)).WithMany().HasForeignKey("marcacaoId").HasPrincipalKey(nameof(Marcacao.id)),
+            //    r => r.HasOne(typeof(Servico)).WithMany().HasForeignKey("servicoId").HasPrincipalKey(nameof(Servico.id)),
+            //    j => j.HasKey("servicoId", "marcacaoId"));
         }
     }
 }

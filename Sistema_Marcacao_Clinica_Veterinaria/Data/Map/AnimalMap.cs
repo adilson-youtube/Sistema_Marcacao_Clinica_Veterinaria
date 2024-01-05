@@ -8,13 +8,13 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Data.Map
     {
         public void Configure(EntityTypeBuilder<Animal> builder)
         {
-            builder.HasKey(p => p.id);
-            builder.Property(p => p.nome);
-            builder.Property(p => p.sexo);
-            builder.Property(p => p.dataNascimento);
-            builder.HasOne(p => p.proprietario).WithMany(p => p.animais).HasForeignKey("proprietarioId");
-            builder.HasOne(p => p.especie).WithMany(p => p.animais).HasForeignKey("epecieId");
-            builder.HasMany(p => p.marcacoes).WithOne(p => p.animal).HasForeignKey("animalId");
+            builder.HasKey(p => p.Id);
+            builder.Property(p => p.Nome);
+            builder.Property(p => p.Sexo);
+            builder.Property(p => p.DataNascimento);
+            builder.HasOne(p => p.Proprietario).WithMany(p => p.Animais).HasForeignKey("ProprietarioId");
+            builder.HasOne(p => p.Especie).WithMany(p => p.Animais).HasForeignKey("EpecieId");
+            builder.HasMany(p => p.Marcacoes).WithOne(p => p.Animal).HasForeignKey("AnimalId");
         }
     }
 }

@@ -3,14 +3,14 @@ using System.Text.Json.Serialization;
 
 namespace Sistema_Marcacao_Clinica_Veterinaria.Models
 {
-    public abstract class Servico
+    public class Servico
     {
-        public int id { get; set; }
-        public DateTime? data { get; set; }
-        public double? preco { get; set; }
-        public string? tipoServico { get; set; }
-        public TipoPagamento? tipoPagamento { get; set; }
-        public ICollection<Marcacao>? marcacoes { get; set; } = new HashSet<Marcacao>();
+        public int Id { get; set; }
+        public DateTime? Data { get; set; }
+        public double? Preco { get; set; }
+        public string? TipoServico { get; set; }
+        public TipoPagamento? TipoPagamento { get; set; }
+        public ICollection<Marcacao>? Marcacoes { get; set; } = new HashSet<Marcacao>();
 
         //[JsonConstructor]
         //protected Servico(DateTime data, double preco, string tipoServico, TipoPagamento tipoPagamento, ICollection<Marcacao> marcacoes) {

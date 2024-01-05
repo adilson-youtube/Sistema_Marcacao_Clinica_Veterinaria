@@ -5,16 +5,16 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Models
 {
     public class Usuario
     {
-        public int id { get; set; }
-        public string? usuario { get; set; }
-        public string? senha { get; set; }
-        public Role? role { get; set; }
-        public DateTime? dataCriacao { get; set; } = new DateTime();
-        public DateTime? ultimoAcesso { get; set; } = new DateTime();
+        public int Id { get; set; }
+        public string? NomeUsuario { get; set; }
+        public string? Senha { get; set; }
+        public Role? Role { get; set; }
+        public DateTime? DataCriacao { get; set; } = new DateTime();
+        public DateTime? UltimoAcesso { get; set; } = new DateTime();
 
         [JsonIgnore]
-        public Proprietario? proprietario { get; set; }
+        public Proprietario? Proprietario { get; set; }
         [JsonIgnore]
-        public Veterinario? veterinario { get; set; }
+        public Veterinario? Veterinario { get; set; }
     }
 }

@@ -19,45 +19,45 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Repositories
             return await _dbContext.Veterinarios.ToListAsync();
         }
 
-        public async Task<Veterinario> BuscarPorId(int id)
+        public async Task<Veterinario> BuscarPorId(int Id)
         {
-            return await _dbContext.Veterinarios.FirstOrDefaultAsync(x => x.id == id);
+            return await _dbContext.Veterinarios.FirstOrDefaultAsync(x => x.Id == Id);
         }
 
-        public async Task<Veterinario> Adicionar(Veterinario veterinario)
+        public async Task<Veterinario> Adicionar(Veterinario Veterinario)
         {
-            await _dbContext.Veterinarios.AddAsync(veterinario);
+            await _dbContext.Veterinarios.AddAsync(Veterinario);
             _dbContext.SaveChanges();
-            return veterinario;
+            return Veterinario;
         }
 
-        public async Task<Veterinario> Actualizar(Veterinario veterinario, int id)
+        public async Task<Veterinario> Actualizar(Veterinario Veterinario, int Id)
         {
-            Veterinario veterinarioPorId = await BuscarPorId(id);
-            if (veterinarioPorId == null)
+            Veterinario VeterinarioPorId = await BuscarPorId(Id);
+            if (VeterinarioPorId == null)
             {
-                throw new Exception($"Veterinario com o id {id} não foi encontrado na BD");
+                throw new Exception($"Veterinario com o id {Id} não foi encontrado na BD");
             }
 
-            veterinarioPorId.nome = veterinarioPorId.nome;
-            veterinarioPorId.genero = veterinarioPorId.genero;
-            veterinarioPorId.especialidade = veterinarioPorId.especialidade;
-            veterinarioPorId.marcacoes = veterinarioPorId.marcacoes;
+            VeterinarioPorId.Nome = Veterinario.Nome;
+            VeterinarioPorId.Genero = Veterinario.Genero;
+            VeterinarioPorId.Especialidade = Veterinario.Especialidade;
+            VeterinarioPorId.Marcacoes = Veterinario.Marcacoes;
 
-            _dbContext.Veterinarios.Update(veterinarioPorId);
+            _dbContext.Veterinarios.Update(VeterinarioPorId);
             _dbContext.SaveChanges();
-            return veterinarioPorId;
+            return VeterinarioPorId;
         }
 
-        public async Task<bool> Apagar(int id)
+        public async Task<bool> Apagar(int Id)
         {
-            Veterinario veterinarioPorId = await BuscarPorId(id);
-            if (veterinarioPorId == null)
+            Veterinario VeterinarioPorId = await BuscarPorId(Id);
+            if (VeterinarioPorId == null)
             {
-                throw new Exception($"Veterinario com o id {id} não foi encontrado na BD");
+                throw new Exception($"Veterinario com o id {Id} não foi encontrado na BD");
             }
 
-            _dbContext.Veterinarios.Remove(veterinarioPorId);
+            _dbContext.Veterinarios.Remove(VeterinarioPorId);
             await _dbContext.SaveChangesAsync();
             return true;
         }

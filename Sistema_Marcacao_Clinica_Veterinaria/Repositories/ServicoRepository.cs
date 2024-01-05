@@ -19,9 +19,9 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Repositories
             return await _dbContext.Servicos.ToListAsync();
         }
 
-        public async Task<Servico> BuscarPorId(int id)
+        public async Task<Servico> BuscarPorId(int Id)
         {
-            return await _dbContext.Servicos.FirstOrDefaultAsync(x => x.id == id);
+            return await _dbContext.Servicos.FirstOrDefaultAsync(x => x.Id == Id);
         }
 
         public async Task<Servico> Adicionar(Servico servico)
@@ -38,33 +38,33 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Repositories
             return servico;
         }
 
-        public async Task<Servico> Actualizar(Servico servico, int id)
+        public async Task<Servico> Actualizar(Servico Servico, int id)
         {
-            Servico servicoPorId = await BuscarPorId(id);
-            if (servicoPorId == null)
+            Servico ServicoPorId = await BuscarPorId(id);
+            if (ServicoPorId == null)
             {
                 throw new Exception($"Servico com o id {id} não foi encontrado na BD");
             }
 
-            servicoPorId.data = servicoPorId.data;
-            servicoPorId.preco = servicoPorId.preco;
-            servicoPorId.tipoPagamento = servicoPorId.tipoPagamento;
-            //servicoPorId.marcacoes = servicoPorId.marcacoes;
+            ServicoPorId.Data = Servico.Data;
+            ServicoPorId.Preco = Servico.Preco;
+            ServicoPorId.TipoPagamento = Servico.TipoPagamento;
+            //servicoPorId.marcacoes = Servico.marcacoes;
 
-            _dbContext.Servicos.Update(servicoPorId);
+            _dbContext.Servicos.Update(ServicoPorId);
             _dbContext.SaveChanges();
-            return servicoPorId;
+            return ServicoPorId;
         }
 
-        public async Task<bool> Apagar(int id)
+        public async Task<bool> Apagar(int Id)
         {
-            Servico servicoPorId = await BuscarPorId(id);
-            if (servicoPorId == null)
+            Servico ServicoPorId = await BuscarPorId(Id);
+            if (ServicoPorId == null)
             {
-                throw new Exception($"Servico com o id {id} não foi encontrado na BD");
+                throw new Exception($"Servico com o id {Id} não foi encontrado na BD");
             }
 
-            _dbContext.Servicos.Remove(servicoPorId);
+            _dbContext.Servicos.Remove(ServicoPorId);
             await _dbContext.SaveChangesAsync();
             return true;
         }

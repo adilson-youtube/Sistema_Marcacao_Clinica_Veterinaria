@@ -8,10 +8,12 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Services
     public class MarcacaoService : IMarcacaoService
     {
         private readonly IMarcacaoRepository _marcacaoRepository;
+        private readonly IMarcacaoServicoRepository _marcacaoServicoRepository;
 
-         public MarcacaoService(IMarcacaoRepository marcacaoRepository) 
+         public MarcacaoService(IMarcacaoRepository marcacaoRepository, IMarcacaoServicoRepository marcacaoServicoRepository) 
         {
             _marcacaoRepository = marcacaoRepository;
+            _marcacaoServicoRepository = marcacaoServicoRepository;
         }
 
         public async Task<List<Marcacao>> ListarMarcacoes()
@@ -26,7 +28,12 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Services
 
         public async Task<Marcacao> Adicionar(Marcacao marcacao)
         {
-            return await _marcacaoRepository.Adicionar(marcacao);
+            Marcacao AuxMarcacao = await _marcacaoRepository.Adicionar(marcacao);
+            foreach (var servico in AuxMarcacao.Servicos) 
+            {
+                await _marcacaoServicoRepository.Adicionar(new MarcacaoServico(AuxMarcacao.Id, servico.Id));
+            }
+            return AuxMarcacao;
         }
 
         public async Task<Marcacao> Actualizar(Marcacao marcacao, int id)

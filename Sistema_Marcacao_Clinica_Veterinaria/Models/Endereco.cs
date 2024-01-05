@@ -4,14 +4,14 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Models
 {
     public class Endereco
     {
-        public int id { get; set; }
-        public string? rua { get; set; }
-        public string? bairro { get; set; }
-        public string? municipio { get; set; }
+        public int Id { get; set; }
+        public string? Rua { get; set; }
+        public string? Bairro { get; set; }
+        public string? Municipio { get; set; }
         //public string? provincia { get; set; }
         [JsonIgnore]
-        public Proprietario? proprietario { get; set; } = null;
-        public int? proprietarioId { get; set; }
+        public Proprietario? Proprietario { get; set; } = null;
+        public int? ProprietarioId { get; set; }
 
         public Endereco() { }
     }

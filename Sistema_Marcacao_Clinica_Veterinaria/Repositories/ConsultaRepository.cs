@@ -19,48 +19,48 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Repositories
             return await _dbContext.Consultas.ToListAsync();
         }
 
-        public async Task<Consulta> BuscarPorId(int id)
+        public async Task<Consulta> BuscarPorId(int Id)
         {
-            return await _dbContext.Consultas.FirstOrDefaultAsync(x => x.id == id);
+            return await _dbContext.Consultas.FirstOrDefaultAsync(x => x.Id == Id);
         }
 
-        public async Task<Consulta> Adicionar(Consulta consulta)
+        public async Task<Consulta> Adicionar(Consulta Consulta)
         {
-            await _dbContext.Consultas.AddAsync(consulta);
+            await _dbContext.Consultas.AddAsync(Consulta);
             _dbContext.SaveChanges();
-            return consulta;
+            return Consulta;
         }
 
-        public async Task<Consulta> Actualizar(Consulta consulta, int id)
+        public async Task<Consulta> Actualizar(Consulta Consulta, int id)
         {
-            Consulta consultaPorId = await BuscarPorId(id);
-            if (consultaPorId == null)
+            Consulta ConsultaPorId = await BuscarPorId(id);
+            if (ConsultaPorId == null)
             {
                 throw new Exception($"Consulta com o id {id} não foi encontrado na BD");
             }
 
-            //consultaPorId.tipoConsulta = consultaPorId.tipoConsulta;
-            consultaPorId.descricao = consultaPorId.descricao;
+            //consultaPorId.tipoConsulta = Consulta.tipoConsulta;
+            ConsultaPorId.Descricao = Consulta.Descricao;
 
-            consultaPorId.data = consultaPorId.data;
-            consultaPorId.preco = consultaPorId.preco;
-            consultaPorId.tipoPagamento = consultaPorId.tipoPagamento;
-            //consultaPorId.marcacoes = consultaPorId.marcacoes;
+            ConsultaPorId.Data = Consulta.Data;
+            ConsultaPorId.Preco = Consulta.Preco;
+            ConsultaPorId.TipoPagamento = Consulta.TipoPagamento;
+            //ConsultaPorId.marcacoes = Consulta.marcacoes;
 
-            _dbContext.Consultas.Update(consultaPorId);
+            _dbContext.Consultas.Update(ConsultaPorId);
             _dbContext.SaveChanges();
-            return consultaPorId;
+            return ConsultaPorId;
         }
 
-        public async Task<bool> Apagar(int id)
+        public async Task<bool> Apagar(int Id)
         {
-            Consulta consultaPorId = await BuscarPorId(id);
-            if (consultaPorId == null)
+            Consulta ConsultaPorId = await BuscarPorId(Id);
+            if (ConsultaPorId == null)
             {
-                throw new Exception($"Consulta com o id {id} não foi encontrado na BD");
+                throw new Exception($"Consulta com o id {Id} não foi encontrado na BD");
             }
 
-            _dbContext.Consultas.Remove(consultaPorId);
+            _dbContext.Consultas.Remove(ConsultaPorId);
             await _dbContext.SaveChangesAsync();
             return true;
         }
