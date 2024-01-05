@@ -21,7 +21,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Models
         //    //this.marcacoes = marcacoes;
         //}
 
-        [JsonConstructor()]
-        protected Servico() { }
+        //[JsonConstructor()]
+        public Servico() { }
     }
 }
