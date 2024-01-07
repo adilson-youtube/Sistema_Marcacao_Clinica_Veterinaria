@@ -17,7 +17,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Models
         public Veterinario? Veterinario { get; set; } = new Veterinario();
         //[ForeignKey("VeterinarioID")]
         public int? VeterinarioID { get; set; }
-        [JsonIgnore]
+        [NotMapped]
         public ICollection<Servico>? Servicos { get; set; } = new HashSet<Servico>();
         public ICollection<MarcacaoServico>? MarcacoesServicos { get; set; } = new HashSet<MarcacaoServico>();
 

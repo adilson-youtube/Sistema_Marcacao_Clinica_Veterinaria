@@ -1,4 +1,5 @@
 ﻿using Sistema_Marcacao_Clinica_Veterinaria.Enums;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
 namespace Sistema_Marcacao_Clinica_Veterinaria.Models
@@ -10,7 +11,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Models
         public double? Preco { get; set; }
         public string? TipoServico { get; set; }
         public TipoPagamento? TipoPagamento { get; set; }
-        [JsonIgnore]
+        [NotMapped]
         public ICollection<Marcacao>? Marcacoes { get; set; } = new HashSet<Marcacao>();
         public ICollection<MarcacaoServico>? MarcacoesServicos { get; set; } = new HashSet<MarcacaoServico>();
 

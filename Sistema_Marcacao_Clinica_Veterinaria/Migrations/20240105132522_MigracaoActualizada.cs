@@ -34,13 +34,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                     Data = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     Preco = table.Column<double>(type: "double precision", nullable: true),
                     TipoServico = table.Column<string>(type: "text", nullable: true),
-                    TipoPagamento = table.Column<int>(type: "integer", nullable: true),
-                    Discriminator = table.Column<string>(type: "text", nullable: false),
-                    Cirurgia_Descricao = table.Column<string>(type: "text", nullable: true),
-                    Consulta_Descricao = table.Column<string>(type: "text", nullable: true),
-                    Descricao = table.Column<string>(type: "text", nullable: true),
-                    Nome = table.Column<string>(type: "text", nullable: true),
-                    Periodo = table.Column<int>(type: "integer", nullable: true)
+                    TipoPagamento = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -62,6 +56,79 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Usuarios", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Cirurgias",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false),
+                    Descricao = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Cirurgias", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Cirurgias_Servicos_Id",
+                        column: x => x.Id,
+                        principalTable: "Servicos",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Consultas",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false),
+                    Descricao = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Consultas", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Consultas_Servicos_Id",
+                        column: x => x.Id,
+                        principalTable: "Servicos",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Exames",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false),
+                    Descricao = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Exames", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Exames_Servicos_Id",
+                        column: x => x.Id,
+                        principalTable: "Servicos",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Vacinas",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false),
+                    Nome = table.Column<string>(type: "text", nullable: true),
+                    Periodo = table.Column<int>(type: "integer", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Vacinas", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Vacinas_Servicos_Id",
+                        column: x => x.Id,
+                        principalTable: "Servicos",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -186,30 +253,6 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "MarcacaoServico",
-                columns: table => new
-                {
-                    MarcacoesId = table.Column<int>(type: "integer", nullable: false),
-                    ServicosId = table.Column<int>(type: "integer", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_MarcacaoServico", x => new { x.MarcacoesId, x.ServicosId });
-                    table.ForeignKey(
-                        name: "FK_MarcacaoServico_Marcacoes_MarcacoesId",
-                        column: x => x.MarcacoesId,
-                        principalTable: "Marcacoes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_MarcacaoServico_Servicos_ServicosId",
-                        column: x => x.ServicosId,
-                        principalTable: "Servicos",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "MarcacoesServicos",
                 columns: table => new
                 {
@@ -253,11 +296,6 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_MarcacaoServico_ServicosId",
-                table: "MarcacaoServico",
-                column: "ServicosId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Marcacoes_AnimalID",
                 table: "Marcacoes",
                 column: "AnimalID");
@@ -294,13 +332,22 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Cirurgias");
+
+            migrationBuilder.DropTable(
+                name: "Consultas");
+
+            migrationBuilder.DropTable(
                 name: "Enderecos");
 
             migrationBuilder.DropTable(
-                name: "MarcacaoServico");
+                name: "Exames");
 
             migrationBuilder.DropTable(
                 name: "MarcacoesServicos");
+
+            migrationBuilder.DropTable(
+                name: "Vacinas");
 
             migrationBuilder.DropTable(
                 name: "Marcacoes");

@@ -22,21 +22,6 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("MarcacaoServico", b =>
-                {
-                    b.Property<int>("MarcacoesId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("ServicosId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("MarcacoesId", "ServicosId");
-
-                    b.HasIndex("ServicosId");
-
-                    b.ToTable("MarcacaoServico");
-                });
-
             modelBuilder.Entity("Sistema_Marcacao_Clinica_Veterinaria.Models.Animal", b =>
                 {
                     b.Property<int>("Id")
@@ -222,10 +207,6 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                     b.Property<DateTime?>("Data")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<double?>("Preco")
                         .HasColumnType("double precision");
 
@@ -237,11 +218,9 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Servicos");
+                    b.ToTable("Servicos", (string)null);
 
-                    b.HasDiscriminator<string>("Discriminator").HasValue("Servico");
-
-                    b.UseTphMappingStrategy();
+                    b.UseTptMappingStrategy();
                 });
 
             modelBuilder.Entity("Sistema_Marcacao_Clinica_Veterinaria.Models.Usuario", b =>
@@ -307,13 +286,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                     b.Property<string>("Descricao")
                         .HasColumnType("text");
 
-                    b.ToTable("Servicos", t =>
-                        {
-                            t.Property("Descricao")
-                                .HasColumnName("Cirurgia_Descricao");
-                        });
-
-                    b.HasDiscriminator().HasValue("Cirurgia");
+                    b.ToTable("Cirurgias");
                 });
 
             modelBuilder.Entity("Sistema_Marcacao_Clinica_Veterinaria.Models.Consulta", b =>
@@ -323,13 +296,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                     b.Property<string>("Descricao")
                         .HasColumnType("text");
 
-                    b.ToTable("Servicos", t =>
-                        {
-                            t.Property("Descricao")
-                                .HasColumnName("Consulta_Descricao");
-                        });
-
-                    b.HasDiscriminator().HasValue("Consulta");
+                    b.ToTable("Consultas");
                 });
 
             modelBuilder.Entity("Sistema_Marcacao_Clinica_Veterinaria.Models.Exame", b =>
@@ -339,7 +306,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                     b.Property<string>("Descricao")
                         .HasColumnType("text");
 
-                    b.HasDiscriminator().HasValue("Exame");
+                    b.ToTable("Exames");
                 });
 
             modelBuilder.Entity("Sistema_Marcacao_Clinica_Veterinaria.Models.Vacina", b =>
@@ -352,22 +319,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                     b.Property<int?>("Periodo")
                         .HasColumnType("integer");
 
-                    b.HasDiscriminator().HasValue("Vacina");
-                });
-
-            modelBuilder.Entity("MarcacaoServico", b =>
-                {
-                    b.HasOne("Sistema_Marcacao_Clinica_Veterinaria.Models.Marcacao", null)
-                        .WithMany()
-                        .HasForeignKey("MarcacoesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Sistema_Marcacao_Clinica_Veterinaria.Models.Servico", null)
-                        .WithMany()
-                        .HasForeignKey("ServicosId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.ToTable("Vacinas");
                 });
 
             modelBuilder.Entity("Sistema_Marcacao_Clinica_Veterinaria.Models.Animal", b =>
@@ -444,6 +396,42 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                         .HasForeignKey("Sistema_Marcacao_Clinica_Veterinaria.Models.Veterinario", "UsuarioId");
 
                     b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("Sistema_Marcacao_Clinica_Veterinaria.Models.Cirurgia", b =>
+                {
+                    b.HasOne("Sistema_Marcacao_Clinica_Veterinaria.Models.Servico", null)
+                        .WithOne()
+                        .HasForeignKey("Sistema_Marcacao_Clinica_Veterinaria.Models.Cirurgia", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Sistema_Marcacao_Clinica_Veterinaria.Models.Consulta", b =>
+                {
+                    b.HasOne("Sistema_Marcacao_Clinica_Veterinaria.Models.Servico", null)
+                        .WithOne()
+                        .HasForeignKey("Sistema_Marcacao_Clinica_Veterinaria.Models.Consulta", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Sistema_Marcacao_Clinica_Veterinaria.Models.Exame", b =>
+                {
+                    b.HasOne("Sistema_Marcacao_Clinica_Veterinaria.Models.Servico", null)
+                        .WithOne()
+                        .HasForeignKey("Sistema_Marcacao_Clinica_Veterinaria.Models.Exame", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Sistema_Marcacao_Clinica_Veterinaria.Models.Vacina", b =>
+                {
+                    b.HasOne("Sistema_Marcacao_Clinica_Veterinaria.Models.Servico", null)
+                        .WithOne()
+                        .HasForeignKey("Sistema_Marcacao_Clinica_Veterinaria.Models.Vacina", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Sistema_Marcacao_Clinica_Veterinaria.Models.Animal", b =>
