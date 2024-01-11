@@ -40,6 +40,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Repositories
             }
 
             UsuarioPorId.NomeUsuario = Usuario.NomeUsuario;
+            UsuarioPorId.Email = Usuario.Email;
             UsuarioPorId.Senha = Usuario.Senha;
             UsuarioPorId.DataCriacao = Usuario.DataCriacao;
             UsuarioPorId.UltimoAcesso = Usuario.UltimoAcesso;

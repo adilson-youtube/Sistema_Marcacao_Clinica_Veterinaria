@@ -234,6 +234,9 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                     b.Property<DateTime?>("DataCriacao")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<string>("Email")
+                        .HasColumnType("text");
+
                     b.Property<string>("NomeUsuario")
                         .HasColumnType("text");
 

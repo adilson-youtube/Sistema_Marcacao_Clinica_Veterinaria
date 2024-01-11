@@ -12,8 +12,8 @@ using Sistema_Marcacao_Clinica_Veterinaria.Data;
 namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
 {
     [DbContext(typeof(MarcacaoClinicaVeterinariaDBContext))]
-    [Migration("20240105132522_MigracaoActualizada")]
-    partial class MigracaoActualizada
+    [Migration("20240111160026_NovaMigracao")]
+    partial class NovaMigracao
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -236,6 +236,9 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
 
                     b.Property<DateTime?>("DataCriacao")
                         .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("text");
 
                     b.Property<string>("NomeUsuario")
                         .HasColumnType("text");

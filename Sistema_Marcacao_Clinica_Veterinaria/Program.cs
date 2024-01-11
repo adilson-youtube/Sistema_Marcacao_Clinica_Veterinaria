@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Sistema_Marcacao_Clinica_Veterinaria.Data;
 using Sistema_Marcacao_Clinica_Veterinaria.Models;
@@ -7,6 +8,9 @@ using Sistema_Marcacao_Clinica_Veterinaria.Services;
 using Sistema_Marcacao_Clinica_Veterinaria.Services.Interfaces;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Microsoft.IdentityModel.Tokens;
+using System;
+using System.Text;
 
 namespace Sistema_Marcacao_Clinica_Veterinaria
 {
@@ -17,6 +21,29 @@ namespace Sistema_Marcacao_Clinica_Veterinaria
             var AllowAllOrigins = "_AllowAllOrigins";
 
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(x =>
+            {
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+
+                    ValidIssuer = builder.Configuration["JwtSettings:issuer"],
+                    ValidAudience = builder.Configuration["JwtSettings:audience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JwtSettings:secretKey"])),
+                    ClockSkew = TimeSpan.Zero
+                };
+            });
+
+            builder.Services.AddAuthorization();
 
             // Add services to the container.
 
@@ -61,6 +88,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria
             builder.Services.AddScoped<IProprietarioService, ProprietarioService>();
             builder.Services.AddScoped<IServicoService, ServicoService>();
             builder.Services.AddScoped<IUsuarioService, UsuarioService>();
+            builder.Services.AddScoped<IAuthenticate, AuthenticateService>();
             builder.Services.AddScoped<IVacinaService, VacinaService>();
             builder.Services.AddScoped<IVeterinarioService, VeterinarioService>();
 
@@ -91,6 +119,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria
 
             //app.UseHttpsRedirection();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
 

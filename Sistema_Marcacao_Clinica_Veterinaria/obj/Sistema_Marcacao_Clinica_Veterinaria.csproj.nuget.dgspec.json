@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\DELL XPS\\Documents\\Projectos do Visual Studio 2022\\Sistema_Marcacao_Clinica_Veterinaria\\Sistema_Marcacao_Clinica_Veterinaria\\Sistema_Marcacao_Clinica_Veterinaria.csproj": {}
+    "D:\\DSICS\\CPDI\\Visual Studio\\WebApp\\2024\\Sistema_Marcacao_Clinica_Veterinaria\\Sistema_Marcacao_Clinica_Veterinaria.csproj": {}
   },
   "projects": {
-    "C:\\Users\\DELL XPS\\Documents\\Projectos do Visual Studio 2022\\Sistema_Marcacao_Clinica_Veterinaria\\Sistema_Marcacao_Clinica_Veterinaria\\Sistema_Marcacao_Clinica_Veterinaria.csproj": {
+    "D:\\DSICS\\CPDI\\Visual Studio\\WebApp\\2024\\Sistema_Marcacao_Clinica_Veterinaria\\Sistema_Marcacao_Clinica_Veterinaria.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\DELL XPS\\Documents\\Projectos do Visual Studio 2022\\Sistema_Marcacao_Clinica_Veterinaria\\Sistema_Marcacao_Clinica_Veterinaria\\Sistema_Marcacao_Clinica_Veterinaria.csproj",
+        "projectUniqueName": "D:\\DSICS\\CPDI\\Visual Studio\\WebApp\\2024\\Sistema_Marcacao_Clinica_Veterinaria\\Sistema_Marcacao_Clinica_Veterinaria.csproj",
         "projectName": "Sistema_Marcacao_Clinica_Veterinaria",
-        "projectPath": "C:\\Users\\DELL XPS\\Documents\\Projectos do Visual Studio 2022\\Sistema_Marcacao_Clinica_Veterinaria\\Sistema_Marcacao_Clinica_Veterinaria\\Sistema_Marcacao_Clinica_Veterinaria.csproj",
-        "packagesPath": "C:\\Users\\DELL XPS\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\DELL XPS\\Documents\\Projectos do Visual Studio 2022\\Sistema_Marcacao_Clinica_Veterinaria\\Sistema_Marcacao_Clinica_Veterinaria\\obj\\",
+        "projectPath": "D:\\DSICS\\CPDI\\Visual Studio\\WebApp\\2024\\Sistema_Marcacao_Clinica_Veterinaria\\Sistema_Marcacao_Clinica_Veterinaria.csproj",
+        "packagesPath": "C:\\Users\\adils\\.nuget\\packages\\",
+        "outputPath": "D:\\DSICS\\CPDI\\Visual Studio\\WebApp\\2024\\Sistema_Marcacao_Clinica_Veterinaria\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\DELL XPS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\adils\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -40,6 +45,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.26, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[7.0.5, )"
@@ -84,7 +93,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
 {
     /// <inheritdoc />
-    public partial class MigracaoActualizada : Migration
+    public partial class NovaMigracao : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -48,6 +48,7 @@ namespace Sistema_Marcacao_Clinica_Veterinaria.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     NomeUsuario = table.Column<string>(type: "text", nullable: true),
+                    Email = table.Column<string>(type: "text", nullable: true),
                     Senha = table.Column<string>(type: "text", nullable: true),
                     Role = table.Column<int>(type: "integer", nullable: true),
                     DataCriacao = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
