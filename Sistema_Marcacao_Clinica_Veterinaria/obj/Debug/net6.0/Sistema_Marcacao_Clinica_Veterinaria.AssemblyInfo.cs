@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Sistema_Marcacao_Clinica_Veterinaria")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9320a9e66c59504679ac74ea16bece9855adaea3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+db05b763dc07defe00d6ee7394ab6c8e0eff3386")]
 [assembly: System.Reflection.AssemblyProductAttribute("Sistema_Marcacao_Clinica_Veterinaria")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Sistema_Marcacao_Clinica_Veterinaria")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
